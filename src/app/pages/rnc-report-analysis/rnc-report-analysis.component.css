@@ -1,0 +1,9 @@
+.ScrollStyle {
+    max-height: 84%;
+    overflow-y: scroll;
+    padding: 2rem 2rem;
+}
+
+.data-mes{
+    font-weight: bolder;
+}

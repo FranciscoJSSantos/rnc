@@ -1,0 +1,111 @@
+.example-card {
+  width: 400px;
+  height: 440px;
+  top: 2rem;
+  max-width: 400px;
+}
+
+.botão-alterar-dados {
+  background-color: #FFDE59!important;
+  color: black;
+  font-weight: bold !important;
+  font-size: 14px;
+  transform: translateY(8px);
+  border: transparent !important;
+  width: 180px;
+  margin-left: 10rem;
+  margin-top: 1rem;
+ 
+}
+
+.mat-card>:first-child, .mat-card-content>:first-child {
+  margin-top: 8px;
+}
+
+.OjOEXb, .ZizeYd, .O7utsb, .ZmqAt {
+  height: 5%;
+  left: 0;
+  position: absolute;
+  top: -3px;
+  width: 100%;
+  background-color: #014248;
+  border-radius: 4px;
+} 
+
+.mat-card-header .mat-card-title {
+  margin-bottom: 12px;
+  margin-left: 7.5rem;
+}
+
+h3{
+  margin-left: 0rem;
+  color: #014248; 
+}
+
+.dados-pessoais{
+  margin-left: 1rem;
+  margin-top: 0rem;
+}
+
+.mat-divider-itens{
+  margin-left: 8rem !important;
+  width: 14rem !important;
+  margin-top: -2.5rem;
+}
+
+h2{
+  font-size: 1rem !important;
+  margin-left: 3rem ;
+  color: #172A3F !important; 
+}
+
+.itens-do-card{
+  margin-bottom: 2rem;
+}
+
+.item-nome{
+  margin-left: 3.5rem;
+  overflow-x: auto;
+  width: 228px;
+  white-space: nowrap;
+  text-overflow: clip;
+}
+
+.item-email{
+  margin-left: 3.8rem;
+  overflow-x: auto;
+  width: 228px;
+}
+
+.item-matricula{
+  margin-left: 2.2rem;
+}
+
+.item-setor{
+  margin-left: 4.1rem;
+}
+
+.item-crbm{
+  margin-left: 3.7rem;
+}
+
+@media screen and (max-width: 1024px){
+  .botão-alterar-dados{
+    margin-left: 4rem;
+  }
+
+  h3{
+    margin-left: -1rem;
+    color: #014248;
+  }
+
+  .mat-divider-itens{
+    margin-left: 7rem !important;
+    width: 14rem !important;
+    margin-top: -2.5rem;
+  }
+  .cartao{
+    margin-top: -2.5rem;
+  }
+  
+}

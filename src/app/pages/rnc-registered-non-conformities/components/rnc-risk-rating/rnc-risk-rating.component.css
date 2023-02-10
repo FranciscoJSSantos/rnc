@@ -1,0 +1,63 @@
+.content-div{
+  display: block !important;
+  margin: 0px 90px !important;
+  padding: 0 24px !important;
+  max-height: 65vh!important;
+  overflow: auto !important;
+}
+
+.btn-enviar{
+  margin-bottom: 1rem;
+}
+
+.btnAcao{
+  color: black;
+  background-color: #F5D556;
+  margin-left: 7.5rem;
+  margin-bottom: 1rem;
+}
+
+.editar-meus-dados{
+  margin-left: 7rem;
+}
+
+.clear{
+  margin-left: 5rem;
+  margin-top: -0.5rem;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+.passo-plano{
+  margin-left: -0.5rem;
+}
+
+@media (max-width: 640px){
+
+  .btn-amarelo{
+    margin-left: -19%;
+  }
+  
+  .editar-meus-dados{
+    margin-left: 42px;
+  }
+
+  /* .clear{
+    margin-left: 1rem;
+    margin-top: -0.5rem;
+    margin-right: 1rem;
+    font-size: 2rem;
+  } */
+
+  .content-div{
+    display: block !important;
+    margin: 0px 90px !important;
+    padding: 0 24px !important;
+    max-height: 65vh!important;
+    overflow: auto !important;
+  }
+
+  .btnAcao {
+    margin-left: 3.5rem;
+  }
+}

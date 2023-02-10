@@ -1,0 +1,23 @@
+.error500 {
+    top: 0;
+    text-align: center;
+    align-content: center;
+    display: grid;
+    height: 100vh;
+    color: #014248;
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+}
+
+h1 {
+    font-size: 7.5em;
+    margin-bottom: 4rem;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: bold;
+}

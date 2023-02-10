@@ -1,0 +1,98 @@
+h3{
+    font-weight: bold;
+    margin-left: 0rem;
+}
+
+h1{
+    font-style: bold;
+}
+
+h2{
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
+    font-size: 1rem;
+    margin-left: 3rem;
+    width: 12rem;
+  }
+
+  li{
+    width: 12rem;
+  }
+
+  .item-nome{
+    margin-left: 3.5rem;
+    margin-top: -2.47rem;
+}
+
+.item-data{
+    margin-left: 2.9rem;
+    margin-top: -2.48rem;
+
+}
+.item-horario{
+    margin-left: 4rem;
+    margin-top: -2.47rem;
+}
+.item-setor{
+    margin-left: 3.1rem;
+    margin-top: -2.47rem;
+}
+
+p{
+    font-size:1rem
+}
+
+.arrumar-card{
+    width:23rem;
+}
+
+.btnAcao{
+    color: black;
+    background-color: #F5D556;
+    margin-left: 26%;
+    margin-bottom: 1rem;
+  }
+
+.btnAcao2{
+  margin-bottom: 1rem;
+  margin-left: 29% !important;
+  background-color: #F5D556;
+}
+
+  .clear{
+    margin-left: 8rem;
+    margin-top: -0.5rem;
+    font-size: 2rem;
+  }
+
+  .editar-meus-dados{
+    margin-left: 9.6rem;
+  }
+
+  @media (max-width: 640px){
+    .clear{
+        margin-left: 3.5rem;
+        margin-top: -0.5rem;
+        font-size: 2rem;
+      }
+
+      .editar-meus-dados{
+        margin-left: 5.5rem;
+      }
+
+      .clear{
+        margin-left: 3rem;
+        margin-top: -0.5rem;
+        font-size: 2rem;
+      }
+
+      .btnAcao{
+        color: black;
+        background-color: #F5D556;
+        margin-left: 14%;
+        margin-bottom: 1rem;
+      }
+
+      .btnAcao2 {
+        margin-left: 18% !important;
+    }
+    }

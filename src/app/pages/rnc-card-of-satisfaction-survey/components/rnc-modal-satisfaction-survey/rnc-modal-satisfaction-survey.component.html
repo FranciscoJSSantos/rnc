@@ -1,0 +1,73 @@
+<div class="mid">
+  <div>
+      <h1 mat-dialog-title>Detalhes</h1>
+  </div>
+  <div>
+      <mat-icon mat-dialog-close class="clear">clear</mat-icon>
+  </div>
+</div>
+<mat-divider></mat-divider>
+<br>
+<mat-dialog-content class="mat-typography arrumar-card">
+
+  <h2>Recepção</h2>
+
+  <p><b>Tempo de espera para ser atendido:</b> {{survey.reception.waitingTime}}</p>
+
+  <p><b>Agilidade e cordialidade no atendimento:</b> {{survey.reception.attendanceAgility}}</p>
+
+  <h2>Área Técnica</h2>
+
+  <p><b>Tempo de espera para exame:</b> {{survey.tecnicalArea.waitingTime}}</p>
+
+  <p><b>Habilidade e cordialidade do Profissional:</b> {{survey.tecnicalArea.profissionalHability}}</p>
+
+  <p><b>Orientação para exame:</b> {{survey.tecnicalArea.examOrientation}}</p>
+
+  <h2>Higienização</h2>
+
+  <p><b>Higienização do local:</b> {{survey.sanitation.localSanitation}}</p>
+
+  <h2>Entrega do Resultado</h2>
+
+  <p><b>Pontualidade na data e hora marcada para entrega:</b> {{survey.deliveryResults.deliveryPunctuality}}</p>
+
+  <p><b>Prazo de entrega dos resultados:</b> {{survey.deliveryResults.deliveryResultTime}}</p>
+
+  <h2>Impressão Geral</h2>
+
+  <p><b>Recomendaria os nossos serviços aos seus parentes e amigos?</b> {{survey.overallImpression.friendsRecommendation}}</p>
+
+  <h2>Porque procurou o laboratório o UNITLAB para fazer seu exame?</h2>
+
+  <ul *ngFor="let sv of survey.whySearch" [ngSwitch]="sv.researchQuestions">
+      <li *ngSwitchCase="'Por ter visto propaganda ou anúncio'"> {{ sv.researchQuestions}}
+        <br> Onde: {{ sv.description }}
+      </li>
+      <li *ngSwitchCase="'Como opção de convênio'"> {{ sv.researchQuestions}}
+        <br> Qual: {{ sv.description }}
+      </li>
+      <li *ngSwitchCase="'Outros'"> {{ sv.researchQuestions}}
+        <br> {{ sv.description }}
+      </li>
+      <li *ngSwitchDefault > {{ sv.researchQuestions }}</li>
+
+      <!-- <li *ngIf="sv.researchQuestions === 'Como opção do Convênio.(Qual?)'"> Qual: {{ sv.description }} </li>
+      <li *ngIf="sv.researchQuestions === 'Outros.'"> {{ sv.description }} </li> -->
+  </ul>
+
+  <h2>Na sua opinião, qual o nosso diferencial?</h2>
+
+  <ul *ngFor="let sv of survey.ourDifferential">
+      <li> {{ sv.description}}</li>
+  </ul>
+
+  <h2>O quanto satisfeito você está?</h2>
+
+  <p>{{survey.howSatisfied.howSatisfiedUre}}</p>
+
+  <h2>Para elogios, sugestões ou reclamações:</h2>
+
+  <p>{{survey.personalInformations.description}}</p>
+
+</mat-dialog-content>

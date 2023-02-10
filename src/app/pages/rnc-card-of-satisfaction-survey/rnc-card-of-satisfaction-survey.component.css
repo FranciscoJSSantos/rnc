@@ -1,0 +1,95 @@
+.example-card {
+  display: -webkit-box;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  height: 16.375rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 21.75rem;
+  border: .0625rem solid #dadce0;
+  border-top: .0625rem solid #e0e0e0;
+  line-height: 0;
+  color: white;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-left: 2rem;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+  margin-block-start: 2em;
+  margin-block-end: 0em;
+  margin-inline-end: 0px;
+}
+
+.titulo {
+  margin-bottom: 2rem;
+}
+
+.mensagem-nenhum-usuario {
+  margin-top: 10rem;
+  font-style: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.tela {
+  flex-wrap: wrap;
+}
+
+
+.ScrollStyle {
+  max-height: 84%;
+  overflow-y: scroll;
+}
+
+.mensagem-nenhum-usuario {
+  margin-top: 10rem;
+  font-style: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+.OjOEXb,
+.ZizeYd,
+.O7utsb,
+.ZmqAt {
+  height: 11%;
+  left: 0;
+  position: absolute;
+  top: -3px;
+  width: 100%;
+  background-color: #014248;
+  border-radius: 4px;
+}
+
+mat-card-content{
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+.btnAcao {
+  color: black;
+  background-color: #F5D556;
+  margin: 0 auto;
+  position: absolute;
+  left: 7.5rem;
+  bottom: 1.5rem;
+}
+
+
+@media screen and (max-width: 640px) {
+  .example-card {
+    margin-left: 0rem !important;
+    margin-top: 1rem;
+  }
+
+  .ScrollStyle {
+    max-height: 87%;
+    overflow-y: scroll;
+  }
+}

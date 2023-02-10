@@ -1,0 +1,93 @@
+.botao-adicionar{
+  background-color: #FFDE59!important;
+  color: black;
+  font-weight: bold !important;
+  font-size: 14px;
+  transform: translateY(10px);
+  border: transparent !important;
+  width: 234px;;
+  margin-left: 1rem;
+  margin-bottom: 1%;
+}
+
+.formulario-registro{
+  margin-top: 2rem;
+  margin-left: 11rem;
+  width: 60rem;
+}
+
+.example-card {
+  max-width: 43rem;
+}
+
+.cabecalho-card{
+  margin-left: 16.5rem;
+  font-size: 28px;
+  font-weight: bold;
+  color: #014248;
+ margin-top: 2rem;
+}
+
+.ScrollStyle
+{
+    max-height:91%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#botao-enviar {
+  background-color: #FFDE59!important;
+  color: black;
+  font-weight: bold !important;
+  font-size: 14px;
+  transform: translateY(10px);
+  border: transparent !important;
+  width: 160px;
+  margin-left: 14.5rem;
+  margin-bottom: 1%;
+}
+
+.button-delete-question{
+  color: red;
+  font-size: 26px !important;
+}
+
+
+.icon-delete-question{
+  font-size:21px;
+}
+
+@media screen and (max-width: 640px){
+
+  .button-delete-question{
+    color: red;
+    margin: -2rem -2rem -2rem -1rem;
+  }
+
+  .cabecalho-card{
+    margin-left: 5rem;
+    font-size: 28px;
+    font-weight: bold;
+    color: #014248;
+    margin-top: 2rem;
+  }
+
+  .formulario-registro{
+    margin-top: 2rem;
+    margin-left: 2rem;
+    width: 16rem;
+  }
+
+  #botao-enviar {
+    width: 131px;
+    margin-left: 6rem;
+    margin-bottom: 1rem;
+  }
+
+  .botao-adicionar{
+    width: 202px;
+    margin-left: 4rem;
+    margin-bottom: 1rem;
+  }
+
+}

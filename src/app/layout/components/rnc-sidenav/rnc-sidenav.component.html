@@ -1,0 +1,30 @@
+<mat-drawer-container class="example-container" autosize>
+    <mat-drawer #drawer class="example-sidenav" [mode]="sidenavMode()">
+        <div class="navbar-top">
+            <div class="logo-4lab">
+                <img src="assets/4lab-logo.png" class="logo-icon">
+                <span class="logo-text">{{projectName}}</span>
+            </div>
+        </div>
+        <div class="user">
+            <div class="nome-usuario">
+                <h4 class="username">
+                    {{ getNome() }}
+                </h4>
+            </div>
+            <h5 class="email">
+                {{ getPerfil() }}
+            </h5>
+        </div>
+        <hr>
+        <ng-material-multilevel-menu [configuration]='config' [items]='getMenu()'>
+        </ng-material-multilevel-menu>
+    </mat-drawer>
+    <div class="h-100 conteudo">
+        <rnc-header (drawer)="drawer.toggle()"></rnc-header>
+        <div class="h-75">
+            <ng-content></ng-content>
+        </div>
+        <rnc-footer></rnc-footer>
+    </div>
+</mat-drawer-container>

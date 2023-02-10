@@ -1,0 +1,8 @@
+<!-- CONTEÚDO RESULTANTE -->
+<rnc-sidenav *ngIf="isLogged(); else telasSemAutenticacao">
+    <router-outlet></router-outlet>
+</rnc-sidenav>
+
+<ng-template #telasSemAutenticacao>
+    <router-outlet></router-outlet>
+</ng-template>

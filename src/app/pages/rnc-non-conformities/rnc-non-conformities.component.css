@@ -1,0 +1,17 @@
+.content-occurrence {
+    overflow: auto !important;
+    height: -webkit-fill-available !important;
+    margin-bottom: 1rem !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+    color: #f44336 !important;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-label{
+    color: #f44336 !important;
+}
+
+.mat-hint{
+    color: #f44336;
+}

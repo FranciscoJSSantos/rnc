@@ -1,0 +1,28 @@
+<div class="row">
+    <div>
+        <h1 mat-dialog-title class="editar-meus-dados">Classificação</h1>
+    </div>
+    <div>
+        <mat-icon mat-dialog-close class="clear">clear</mat-icon>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<br>
+<mat-dialog-content class="mat-typography arrumar-card">
+        <div class="row">
+            <mat-form-field class="col-sm" appearance="outline">
+                <mat-label>Classificar Risco</mat-label>
+                <mat-select [formControl]="risksForm">
+                  <mat-option *ngFor="let risk of risks" [value]="risk.id">
+                    {{ risk.name }}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button class="btnAcao" (click)="analyzeRiskCause()">
+        Enviar
+        <mat-icon>arrow_forward</mat-icon>
+        </button>
+</mat-dialog-actions>

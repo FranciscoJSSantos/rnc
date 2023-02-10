@@ -1,0 +1,142 @@
+<div class="row">
+    <div>
+        <h1 mat-dialog-title class="editar-meus-dados">Análise causa raíz</h1>
+    </div>
+    <div>
+        <mat-icon mat-dialog-close class="clear">clear</mat-icon>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<br>
+<div mat-dialog-content class="content-div">
+
+    <mat-vertical-stepper #stepper *ngIf="isMobile(); else isWeb" linear="true">
+        <mat-step errorMessage="Campos obrigatórios" [stepControl]="causaRaiz">
+            <ng-template matStepLabel>5 Porquês</ng-template>
+            <div [formGroup]="fiveWhat">
+                <div formArrayName="what">
+                    <div *ngFor="let question of fiveWhat.get('what').controls;let i = index"
+                        [formGroupName]="i">
+                        <mat-form-field class="col-sm-12 col-lg-12" appearance="outline">
+                            <mat-label> {{ i+1 }}º Porquê  </mat-label>
+                            <input matInput formControlName="what" />
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <button align="end" mat-raised-button class="btn-amarelo" matStepperNext>
+                        Próximo
+                        <mat-icon>arrow_forward</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step #step2 errorMessage="Campos obrigatórios" [stepControl]="actionPlanForm">
+            <form [formGroup]="actionPlanForm" class="passo-plano">
+                <ng-template matStepLabel>Plano de Ação</ng-template>
+                <div class="row">
+                    <mat-form-field class="col-sm" appearance="outline">
+                        <mat-label>Plano de Ação</mat-label>
+                        <mat-select (selectionChange)="findActionPlanById($event.value)" formControlName="id">
+                            <mat-option *ngFor="let plan of actionPlans" [value]="plan.id">
+                                {{ plan.name }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div formArrayName="questions">
+                    <div *ngFor="let question of actionPlanForm.get('questions').controls;let i = index"
+                        [formGroupName]="i">
+                        <mat-form-field class="col-sm-12 col-lg-12" appearance="outline">
+                            <mat-label> {{ question.value.value }} </mat-label>
+                            <input matInput formControlName="response" />
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start">
+                        <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                            <mat-icon>arrow_back</mat-icon>
+                            Voltar
+                        </button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <button align="end" mat-raised-button class="btn-amarelo" (click)="analyzeRootCause()">
+                            Enviar
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </mat-step>
+    </mat-vertical-stepper>
+
+
+    <ng-template #isWeb>
+        <mat-horizontal-stepper #stepper linear="true">
+            <mat-step errorMessage="Campos obrigatórios" [stepControl]="causaRaiz">
+                <ng-template matStepLabel>5 Porquês</ng-template>
+                    <div [formGroup]="fiveWhat">
+                        <div formArrayName="what">
+                            <div *ngFor="let question of fiveWhat.get('what').controls;let i = index"
+                                [formGroupName]="i">
+                                <mat-form-field class="col-sm-12 col-lg-12" appearance="outline">
+                                    <mat-label> {{ i+1 }}º Porquê </mat-label>
+                                    <input matInput formControlName="what" />
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-end">
+                        <button align="end" mat-raised-button class="btn-amarelo" matStepperNext>
+                            Próximo
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step #step2 errorMessage="Campos obrigatórios" [stepControl]="actionPlanForm">
+                <form [formGroup]="actionPlanForm">
+                    <ng-template matStepLabel>Plano de Ação</ng-template>
+                    <div class="row">
+                        <mat-form-field class="col-sm" appearance="outline">
+                            <mat-label>Plano de Ação</mat-label>
+                            <mat-select (selectionChange)="findActionPlanById($event.value); setNameActionPlan()"
+                                formControlName="id">
+                                <mat-option *ngFor="let plan of actionPlans" [value]="plan.id">
+                                    {{ plan.name }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div formArrayName="questions">
+                        <div *ngFor="let question of actionPlanForm.get('questions').controls;let i = index"
+                            [formGroupName]="i">
+                            <mat-form-field class="col-sm-12 col-lg-12" appearance="outline">
+                                <mat-label> {{ question.value.value }} </mat-label>
+                                <input matInput formControlName="response" />
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+                <div class="row">
+                    <div class="col-6 d-flex justify-content-start">
+                        <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                            <mat-icon>arrow_back</mat-icon>
+                            Voltar
+                        </button>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <button align="end" mat-raised-button class="btn-amarelo" (click)="analyzeRootCause()">
+                            Enviar
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-horizontal-stepper>
+    </ng-template>
+</div>

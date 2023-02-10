@@ -1,0 +1,63 @@
+<div class="row">
+    <div>
+        <h1 mat-dialog-title class="editar-meus-dados">Detalhes</h1>
+    </div>
+    <div>
+        <mat-icon mat-dialog-close class="clear">clear</mat-icon>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<br>
+<mat-dialog-content class="mat-typography arrumar-card">
+
+    <h3>Nome:</h3>
+    <h2 class="item-nome">{{occurrence.userName}}</h2>
+
+    <h3>Data:</h3>
+    <h2 class="item-data">{{occurrence.date | date: "dd/MM/yyyy"}}</h2>
+
+    <h3>Horário:</h3>
+    <h2 class="item-horario">{{occurrence.hour}}</h2>
+
+    <span *ngIf="occurrence.setor">
+        <h3>Setor:</h3>
+        <h2 class="item-setor">{{occurrence.setor}}</h2>
+    </span>
+
+    <h3>Ocorrências:</h3>
+    <ul *ngFor="let oc of occurrence.occurrences">
+        <li> {{ oc.description}} {{oc.dsOccurrenceType}} </li>
+    </ul>
+
+    <h3>Classificação da ocorrência:</h3>
+    <h2>{{occurrence.occurrenceClassification}}</h2>
+
+    <span *ngIf="occurrence.peopleInvolved">
+        <h3>Pessoas Envolvidas:</h3>
+        <p>{{occurrence.peopleInvolved}}</p>
+    </span>
+
+    <h3>Anexos:</h3>
+    <ul *ngFor="let arc of archives">
+        <li>
+            <span>
+                {{arc.occurrenceDescription}}:
+            </span>
+            <a href="{{arc.url}}" [download]>
+                {{arc.fileName}}
+            </a>
+        </li>
+    </ul>
+
+</mat-dialog-content>
+<mat-dialog-actions [ngSwitch]="occurrence.occurrencePendency">
+    <button *ngSwitchCase="1" mat-raised-button class="btnAcao" (click)="analisarOccurrence(occurrence.id);">
+        <mat-icon>manage_search</mat-icon>&nbsp;Analisar Causa Raiz
+    </button>
+    <button *ngSwitchCase="2" mat-raised-button (click)="classificacaoDeRisco(occurrence.id);" class="btnAcao2">
+        <mat-icon>article</mat-icon>&nbsp;Classificar Risco
+    </button>
+    <button *ngSwitchCase="3" mat-raised-button (click)="verificacaoDeEficacia(occurrence.id);" class="btnAcao2">
+        <mat-icon>fact_check</mat-icon>&nbsp;Verificar Eficácia
+    </button>
+</mat-dialog-actions>

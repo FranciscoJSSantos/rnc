@@ -1,0 +1,301 @@
+<div class="row">
+  <h1 class="titulo">Cadastro da pesquisa de satisfação</h1>
+</div>
+<div class="ScrollStyle">
+  <div class="justify-content-center d-flex">
+    <mat-card class="cartao">
+      <div class="OjOEXb"></div>
+      <div class="nome-do-form">
+        <h1>Pesquisa de satisfação de Pacientes</h1>
+      </div>
+
+      <form [formGroup]="reception">
+
+        <h2 class="sessao">RECEPÇÃO</h2>
+        <br>
+
+        <label>Tempo de espera para ser atendido:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="waitingTime">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+        <label>Agilidade e cordialidade no atendimento:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="attendanceAgility">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+      <form [formGroup]="tecnicalArea">
+        <h2 class="sessao">ÁREA TÉCNICA</h2>
+        <br>
+
+        <label>Tempo de espera para exame:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="waitingTime">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+        <label>Habilidade e cordialidade do Profissional:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="profissionalHability">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+        <label>Orientação para exame:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="examOrientation">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+      <form [formGroup]="sanitation">
+        <h2 class="sessao">HIGIENIZAÇÃO</h2>
+        <br>
+
+        <label>Higienização do local:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="localSanitation">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+      <form [formGroup]="deliveryResults">
+        <h2 class="sessao">ENTREGA DO RESULTADO</h2>
+        <br>
+
+        <label>Pontualidade na data e hora marcada para entrega:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="deliveryPunctuality">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+        <label>Prazo de entrega dos resultados:</label>
+        <mat-radio-group aria-label="Select an option" formControlName="deliveryResultTime">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Ótimo</mat-radio-button>
+          <mat-radio-button value="Good">Bom</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Ruim</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito Ruim</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+      <form [formGroup]="overallImpression">
+
+        <h2 class="sessao">IMPRESSÃO GERAL</h2>
+        <br>
+
+        <label>Recomendaria os nossos serviços aos seus parentes e amigos?</label>
+        <mat-radio-group aria-label="Select an option" formControlName="friendsRecommendation">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Yes">Sim</mat-radio-button>
+          <mat-radio-button value="Maybe">Talvez</mat-radio-button>
+          <mat-radio-button value="No">Não</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+
+      <form [formGroup]="whySearch">
+
+        <h2 class="sessao">PORQUE PROCUROU O LABORATÓRIO O UNITLAB PARA FAZER SEU EXAME?</h2>
+        <br>
+
+        <section class="example-section">
+          <div>
+            <p>
+              <mat-checkbox formControlName="MedicalRecommendation" value="Por recomendação médica">Por recomendação
+                médica</mat-checkbox>
+            </p>
+            <!-- <mat-form-field class="invisible" appearance="none">
+              <input placeholder="Por recomendação médica" matInput formControlName="medDesc">
+            </mat-form-field> -->
+          </div>
+
+          <p>
+            <mat-checkbox formControlName="FriednOrRelatives" value="Por indicação de amigo ou parente">Por
+              indicação de amigo ou parente</mat-checkbox>
+          </p>
+
+          <!-- <mat-form-field class="invisible" appearance="none">
+            <input placeholder="Por indicação de amigo ou parente" matInput formControlName="friendsDesc">
+          </mat-form-field> -->
+
+          <p>
+            <mat-checkbox formControlName="Location" value="Pela localização">Pela localização</mat-checkbox>
+          </p>
+
+          <!-- <mat-form-field class="invisible" appearance="none">
+            <input placeholder="Pela localização" matInput formControlName="localDesc">
+          </mat-form-field> -->
+
+          <!-- Onde Inicio -->
+          <p>
+            <mat-checkbox class="onde-check" formControlName="Advertising" (click)="changeClass()" value="Por ter visto propaganda ou anúncio.(Onde?)">Por ter
+              visto propaganda ou anúncio.</mat-checkbox>
+          </p>
+
+          <div *ngIf="((aux ? 'invisible' : ''))">
+            <mat-form-field appearance="outline">
+              <mat-label>Onde?</mat-label>
+              <input matInput placeholder="Onde?" formControlName="whereDescription">
+            </mat-form-field>
+          </div>
+          <!-- Onde Fim -->
+
+          <!-- Qual Inicio -->
+          <p>
+            <mat-checkbox formControlName="IsuranceOption" (click)="changeClass2()" value="Como opção do Convênio.(Qual?)">Como opção do
+              Convênio.</mat-checkbox>
+          </p>
+
+          <div *ngIf="((aux2 ? 'invisible' : ''))">
+            <mat-form-field appearance="outline">
+              <mat-label>Qual?</mat-label>
+              <input matInput placeholder="Qual?" formControlName="whichDescription">
+            </mat-form-field>
+          </div>
+          <!-- Qual Fim -->
+
+          <!-- Outros Inicio -->
+          <p>
+            <mat-checkbox formControlName="Others" (click)="changeClass3()" value="Outros.">Outros.</mat-checkbox>
+          </p>
+
+          <div *ngIf="((aux3 ? 'invisible' : ''))">
+            <mat-form-field appearance="outline" >
+              <mat-label>Outros</mat-label>
+              <input matInput placeholder="Outros" formControlName="otherDescription">
+            </mat-form-field>
+          </div>
+          <!-- Outros Fim -->
+        </section>
+      </form>
+
+      <form [formGroup]="ourDifferential">
+        <h2 class="sessao">NA SUA OPINIÃO, QUAL O NOSSO DIFERENCIAL?</h2>
+        <br>
+        <section class="example-section">
+          <p>
+            <mat-checkbox formControlName="Attendence">Atendimento</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="Agility">Agilidade</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="RapidResults">Resultados rápidos</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="DefferentialTreatment">Tratamento diferenciado</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="Coffe">Cafezinho</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="Localization">Localização</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="Confort">Conforto</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="Proficinals">Profissionais</mat-checkbox>
+          </p>
+          <p>
+            <mat-checkbox formControlName="Others">Outros</mat-checkbox>
+          </p>
+        </section>
+
+      </form>
+
+      <form [formGroup]="howSatisfied">
+
+        <h2 class="sessao">O QUANTO SATISFEITO VOCÊ ESTÁ?</h2>
+        <br>
+
+        <mat-radio-group class="o-quao-satisfeito-voce-esta" aria-label="Select an option"
+          formControlName="howSatisfiedUre">
+          <mat-radio-button class="radio-button-show"></mat-radio-button>
+          <mat-radio-button value="Excellent">Muito satisfeito</mat-radio-button>
+          <mat-radio-button value="Good">Satisfeito</mat-radio-button>
+          <mat-radio-button value="Regular">Regular</mat-radio-button>
+          <mat-radio-button value="Bad">Insatisfeito</mat-radio-button>
+          <mat-radio-button value="TooBad">Muito insatisfeito</mat-radio-button>
+        </mat-radio-group>
+
+      </form>
+
+      <form [formGroup]="personalInformations">
+
+        <h2 class="sessao">CASO VOCÊ DESEJE RECEBER ALGUM RETORNO, FAVOR INFORMAR:</h2>
+        <br>
+        <div class="favor-informar">
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nome Completo</mat-label>
+            <input matInput placeholder="Nome Completo" formControlName="name">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Telefone</mat-label>
+            <input matInput placeholder="Telefone" formControlName="number" mask="(00) 00000-0000">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" formControlName="email">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <textarea matInput placeholder="Para elogios, sugestões ou reclamações" formControlName="description">
+      </textarea>
+          </mat-form-field>
+
+
+        </div>
+      </form>
+      <br>
+      <div class="button-enviar">
+        <button type="submit" mat-raised-button class="btnAcao" (click)="save()">
+          Enviar
+          <mat-icon class="check">check</mat-icon>
+        </button>
+      </div>
+
+    </mat-card>
+
+  </div>
+</div>

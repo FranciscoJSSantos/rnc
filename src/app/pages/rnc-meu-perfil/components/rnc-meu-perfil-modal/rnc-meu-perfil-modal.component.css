@@ -1,0 +1,34 @@
+.clear{
+    margin-left: 3rem;
+    margin-top: -1rem;
+    font-size: 1.5rem;
+}
+
+.editar-meus-dados{
+    margin-left: 4.5rem;
+}
+
+#formulario-meu-perfil-modal{
+    margin-left: 0.5rem;
+
+}
+
+.btnAcao{
+    color: white;
+    background-color: #008001;
+    margin-left: 2.5rem;
+  }
+
+
+.formulario-meu-perfil{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 640px){
+    .clear{
+        margin-left: 2rem;
+        margin-top: -1rem;
+        font-size: 1.5rem;
+    }
+}

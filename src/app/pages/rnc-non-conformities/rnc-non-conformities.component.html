@@ -1,0 +1,413 @@
+<div class="row">
+    <h2 class="titulo">Cadastro de Ocorrências</h2>
+</div>
+<div class="content-occurrence">
+    <mat-card class="card-test">
+        <mat-card-content class="card-content-test">
+            <mat-vertical-stepper #stepper *ngIf="isMobile(); else isWeb" linear="true">
+                <mat-step errorMessage="Campos obrigatórios" [stepControl]="principal">
+                    <ng-template matStepLabel>Seleção</ng-template>
+                    <form [formGroup]="principal">
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6">
+                                <ng-select [items]="types" bindLabel="name" bindValue="id"
+                                    placeholder="Classificação de ocorrência" formControlName="occurrenceTypeId"
+                                    appendTo="body" [hideSelected]="true" [closeOnSelect]="true" required>
+                                </ng-select>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <ng-select (remove)="removeOC($event)" (clear)="resetOcurrences()" bindValue="id"
+                                    [items]="typesClassification" bindLabel="description" placeholder="Ocorrências"
+                                    formArrayName="occurrences" appendTo="body" [multiple]="true"
+                                    (add)="addEvent($event)" addTagText="Adicionar nova Ocorrência" required
+                                    [addTag]="true">
+                                </ng-select>
+                            </div>
+                            <div class="col-sm-12 col-lg-6">
+                                <ng-select [items]="Classifications" bindLabel="name" bindValue="id"
+                                    placeholder="Classificação da ocorrência" formControlName="occurrenceClassification"
+                                    appendTo="body" [hideSelected]="true" [closeOnSelect]="true" required>
+                                </ng-select>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="row">
+                        <div class="col-12 d-flex justify-content-end">
+                            <button align="end" mat-raised-button (click)="validatePrincipal()" class="btn-amarelo"
+                                matStepperNext>
+                                Próximo
+                                <mat-icon>arrow_forward</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </mat-step>
+
+                <mat-step #step2 errorMessage="Campos obrigatórios" [stepControl]="evidence">
+                    <form [formGroup]="evidence">
+                        <ng-template matStepLabel>Vínculo de evidências</ng-template>
+
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                    <ng-select [items]="this.principal.get('occurrences').value" bindLabel="description"
+                                        bindValue="description" placeholder="Ocorrência" formControlName="description"
+                                        appendTo="body" addTagText="Adicionar nova Ocorrência">
+                                    </ng-select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <button color="primary" mat-raised-button (click)="abrirAnexos()">
+                                    <mat-icon>attach_file</mat-icon>&nbsp;Anexar evidências
+                                </button>
+
+                                <input id="anexo" hidden="true" type="file" formControlName="archive" ng2FileSelect
+                                    [uploader]="uploader" multiple (onFileSelected)="uploadFile($event)" />
+                            </div>
+
+                            <br><br>
+
+                            <div class="row" style="margin-bottom: 40px">
+
+                                <h3>Evidências</h3>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th width="50%">Nome</th>
+                                            <th>Ocorrência</th>
+                                            <th>Tamanho</th>
+                                            <th>Ações</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <tr *ngFor="let item of archives">
+                                            <td><strong>{{ item?.fileName }}</strong></td>
+                                            <td nowrap> {{ item?.occurrenceDescription }}</td>
+                                            <td *ngIf="uploader.options.isHTML5" nowrap> {{ item?.size/1024/1024 |
+                                                number:'.2' }} MB</td>
+                                            <td nowrap>
+                                                <button mat-mini-fab color="warn" (click)="removeFileModal(item)">
+                                                    <mat-icon>delete</mat-icon>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+                                <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                                    <mat-icon>arrow_back</mat-icon>
+                                    Voltar
+                                </button>
+                            </div>
+
+                            <div class="col-6 d-flex justify-content-end">
+                                <button id="proximo" align="end" mat-raised-button (click)="validateEvidence()"
+                                    class="btn-amarelo" matStepperNext>
+                                    Próximo
+                                    <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step #step2 errorMessage="Campos obrigatórios" [stepControl]="description">
+                    <form [formGroup]="description">
+                        <ng-template matStepLabel>Descrição</ng-template>
+                        <div class="row">
+                            <div class="col-sm-12 col-lg-6"
+                                *ngIf="this.principal.get('occurrenceTypeId').value == '1' || this.principal.get('occurrenceTypeId').value == '2'">
+                                <ng-select [items]="setores" bindLabel="name" bindValue="id" placeholder="Setor"
+                                    formControlName="setor" appendTo="body">
+                                </ng-select>
+                            </div>
+                            <mat-form-field class="col-sm-12 col-lg-4"
+                                *ngIf="this.principal.get('occurrenceTypeId').value != '3'">
+                                <mat-label>Pessoas Envolvidas</mat-label>
+                                <input matInput formControlName="peopleInvolved" />
+                            </mat-form-field>
+                            <mat-form-field class="col-sm-12 col-lg-4">
+                                <mat-label>Horário</mat-label>
+                                <input matInput type="time" formControlName="registerHour" />
+                            </mat-form-field>
+                            <mat-form-field
+                                class="col-sm-12 col-lg-6 {{ validarCampo() ? 'ng-invalid mat-form-field-invalid': ''  }}">
+                                <mat-label>Data</mat-label>
+                                <input matInput type="text" maxlength="10"
+                                    [textMask]="{mask: mask, guide: false, modelClean: true}" [matDatepicker]="dp"
+                                    (dateChange)="setDate($event.target.value)" (keyup)="setDate($event.target.value)"
+                                    required>
+                                <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                <mat-datepicker #dp></mat-datepicker>
+                                <mat-hint *ngIf="validarCampo()">
+                                    Data inválida
+                                </mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <mat-form-field class="col-12">
+                                <mat-label>Mais Informações</mat-label>
+                                <textarea matInput formControlName="moreInformation"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+                                <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                                    <mat-icon>arrow_back</mat-icon>
+                                    Voltar
+                                </button>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button align="end" mat-raised-button (click)="validateDescription()"
+                                    class="btn-amarelo" matStepperNext>
+                                    Próximo
+                                    <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+
+                <mat-step errorMessage="Campos obrigatórios" [stepControl]="acaoImediata">
+                    <form [formGroup]="acaoImediata">
+                        <ng-template matStepLabel>Ação Imediata</ng-template>
+                        <div class="row">
+                            <mat-form-field class="col-12">
+                                <mat-label>Ação Imediata</mat-label>
+                                <textarea matInput formControlName="immediateAction"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 d-flex justify-content-start">
+                                <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                                    <mat-icon>arrow_back</mat-icon>
+                                    Voltar
+                                </button>
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <button align="end" mat-raised-button (click)="saveOccurrence()" class="btn-amarelo"
+                                    matStepperNext>
+                                    Enviar
+                                    <mat-icon>send</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </mat-step>
+            </mat-vertical-stepper>
+
+
+            <ng-template #isWeb>
+                <mat-horizontal-stepper #stepper linear="true">
+                    <mat-step #step1 errorMessage="Campos obrigatórios" [stepControl]="principal">
+                        <ng-template matStepLabel>Seleção</ng-template>
+                        <form [formGroup]="principal">
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6">
+                                    <ng-select [items]="types" bindLabel="name" bindValue="id"
+                                        placeholder="Tipo da ocorrência" formControlName="occurrenceTypeId"
+                                        appendTo="body" [hideSelected]="true" [closeOnSelect]="true" required>
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <ng-select (remove)="removeOC($event)" (clear)="resetOcurrences()" bindValue="id"
+                                        [items]="typesClassification" bindLabel="description" placeholder="Ocorrências"
+                                        formArrayName="occurrences" appendTo="body" [multiple]="true"
+                                        (add)="addEvent($event)" addTagText="Adicionar nova Ocorrência" required
+                                        [addTag]="true">
+                                    </ng-select>
+                                </div>
+                                <div class="col-sm-12 col-lg-6">
+                                    <ng-select [items]="Classifications" bindLabel="name" bindValue="id"
+                                        placeholder="Classificação da ocorrência"
+                                        formControlName="occurrenceClassification" appendTo="body" [hideSelected]="true"
+                                        [closeOnSelect]="true" required>
+                                    </ng-select>
+                                </div>
+                            </div>
+                        </form>
+                        <div class="row">
+                            <div class="col-12 d-flex justify-content-end">
+                                <button id="proximo" align="end" mat-raised-button (click)="validatePrincipal()"
+                                    class="btn-amarelo" matStepperNext>
+                                    Próximo
+                                    <mat-icon>arrow_forward</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </mat-step>
+
+                    <mat-step #step2 errorMessage="Campos obrigatórios" [stepControl]="evidence">
+                        <form [formGroup]="evidence">
+                            <ng-template matStepLabel>Vínculo de evidências</ng-template>
+
+                            <div>
+                                <div class="row">
+                                    <div class="col-sm-12 col-lg-6">
+                                        <ng-select [items]="this.principal.get('occurrences').value"
+                                            bindLabel="description" bindValue="description" placeholder="Ocorrência"
+                                            formControlName="description" appendTo="body"
+                                            addTagText="Adicionar nova Ocorrência">
+                                        </ng-select>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <button color="primary" mat-raised-button (click)="abrirAnexos()">
+                                        <mat-icon>attach_file</mat-icon>&nbsp;Anexar evidências
+                                    </button>
+
+                                    <input id="anexo" hidden="true" type="file" formControlName="archive" ng2FileSelect
+                                        [uploader]="uploader" multiple (onFileSelected)="uploadFile($event)" />
+                                </div>
+
+                                <br><br>
+
+                                <div class="row" style="margin-bottom: 40px">
+                                    <h3>Evidências</h3>
+
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th width="35%">Nome</th>
+                                                <th>Ocorrência</th>
+                                                <th>Tamanho</th>
+                                                <th>Ações</th>
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                            <tr *ngFor="let item of archives">
+                                                <td><strong>{{ item?.fileName }}</strong></td>
+                                                <td nowrap> {{ item?.occurrenceDescription }}</td>
+                                                <td *ngIf="uploader.options.isHTML5" nowrap> {{ item?.size/1024/1024 |
+                                                    number:'.2' }} MB</td>
+                                                <td nowrap>
+                                                    <button mat-mini-fab color="warn" (click)="removeFileModal(item)">
+                                                        <mat-icon>delete</mat-icon>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 d-flex justify-content-start">
+                                    <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                                        <mat-icon>arrow_back</mat-icon>
+                                        Voltar
+                                    </button>
+                                </div>
+
+                                <div class="col-6 d-flex justify-content-end">
+                                    <button id="proximo" align="end" mat-raised-button (click)="validateEvidence()"
+                                        class="btn-amarelo" matStepperNext>
+                                        Próximo
+                                        <mat-icon>arrow_forward</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step #step3 errorMessage="Campos obrigatórios" [stepControl]="description">
+                        <form [formGroup]="description">
+                            <ng-template matStepLabel>Descrição</ng-template>
+                            <div class="row">
+                                <div class="col-sm-12 col-lg-6"
+                                    *ngIf="this.principal.get('occurrenceTypeId').value == '1' || this.principal.get('occurrenceTypeId').value == '2'">
+                                    <ng-select [items]="setores" bindLabel="name" bindValue="id" placeholder="Setor"
+                                        formControlName="setor" appendTo="body">
+                                    </ng-select>
+                                </div>
+                                <mat-form-field class="col-sm-12 col-lg-6"
+                                    *ngIf="this.principal.get('occurrenceTypeId').value != '3'">
+                                    <mat-label>Pessoas Envolvidas</mat-label>
+                                    <input matInput formControlName="peopleInvolved" />
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="col-sm-12 col-lg-6">
+                                    <mat-label>Horário</mat-label>
+                                    <input matInput type="time" formControlName="registerHour" />
+                                </mat-form-field>
+                                <mat-form-field
+                                    class="col-sm-12 col-lg-6 {{ validarCampo() ? 'ng-invalid mat-form-field-invalid': ''  }}">
+                                    <mat-label>Data</mat-label>
+                                    <input matInput type="text" maxlength="10"
+                                        [textMask]="{mask: mask, guide: false, modelClean: true}" [matDatepicker]="dp"
+                                        (dateChange)="setDate($event.target.value)"
+                                        (keyup)="setDate($event.target.value)" required>
+                                    <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp></mat-datepicker>
+                                    <mat-hint *ngIf="validarCampo()">
+                                        Data inválida
+                                    </mat-hint>
+                                </mat-form-field>
+                            </div>
+                            <div class="row">
+                                <mat-form-field class="col-12">
+                                    <mat-label>Mais Informações</mat-label>
+                                    <textarea matInput formControlName="moreInformation"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 d-flex justify-content-start">
+                                    <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                                        <mat-icon>arrow_back</mat-icon>
+                                        Voltar
+                                    </button>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <button id="proximo" align="end" mat-raised-button (click)="validateDescription()"
+                                        class="btn-amarelo" matStepperNext>
+                                        Próximo
+                                        <mat-icon>arrow_forward</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+
+                    <mat-step #step4 errorMessage="Campos obrigatórios" [stepControl]="acaoImediata">
+                        <form [formGroup]="acaoImediata">
+                            <ng-template matStepLabel>Ação Imediata</ng-template>
+                            <div class="row">
+                                <mat-form-field class="col-12">
+                                    <mat-label>Ação Imediata</mat-label>
+                                    <textarea matInput formControlName="immediateAction"></textarea>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-6 d-flex justify-content-start">
+                                    <button align="start" mat-raised-button class="btn-amarelo" matStepperPrevious>
+                                        <mat-icon>arrow_back</mat-icon>
+                                        Voltar
+                                    </button>
+                                </div>
+                                <div class="col-6 d-flex justify-content-end">
+                                    <button align="end" mat-raised-button (click)="saveOccurrence()" class="btn-amarelo"
+                                        matStepperNext>
+                                        Enviar
+                                        <mat-icon>send</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </mat-step>
+                </mat-horizontal-stepper>
+            </ng-template>
+
+        </mat-card-content>
+    </mat-card>
+</div>

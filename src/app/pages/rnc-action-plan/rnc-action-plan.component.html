@@ -1,0 +1,27 @@
+<div class="row">
+  <h2 class="titulo">Plano de Ação Cadastrados</h2>
+</div>
+<div class=" d-flex justify-content-center tela ScrollStyle">
+  <mat-card class="example-card" *ngFor="let actionPlan of actionsPlans">
+    <br>
+    <div class="OjOEXb">
+    </div>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div class="row item-cartao">
+        <h3 class="itens-cartao">
+          <mat-panel-title>
+            <b>Plano</b>: {{ actionPlan.name }}
+          </mat-panel-title>
+        </h3>
+      </div>
+      <div>
+        <mat-divider></mat-divider>
+        <br>
+        <button mat-raised-button class="btnAcao" (click)="detalhePlanodeAcao(actionPlan.id);">
+          <mat-icon>info</mat-icon>&nbsp; Sobre o plano
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,19 @@
+<mat-toolbar class="row">
+    <button class="menu-4lab" mat-icon-button (click)="drawer.emit()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span class="example-spacer"></span>
+    <button (menuOpened)="menuOpened()" (menuClosed)="menuClosed()" class="botao-menu" mat-button
+        [matMenuTriggerFor]="menu">
+        <mat-icon class="icone-account-circle">account_circle</mat-icon>Menu
+        <mat-icon class="s-16" fxHide.xs>{{ menuIsOpen ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="['/meu-perfil']">
+            <mat-icon>person</mat-icon>Meu Perfil
+        </button>
+        <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>Sair
+        </button>
+    </mat-menu>
+</mat-toolbar>

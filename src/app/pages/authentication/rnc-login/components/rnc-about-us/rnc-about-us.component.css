@@ -1,0 +1,59 @@
+.titulo-4lab{
+  margin-left: 44% !important;
+  color: #014248;
+  font-weight: bold;
+}
+
+.arrumar-card{
+  width: 79rem;
+  height: 48rem;
+}
+
+.logo{
+  width: 175px;
+  background-color: white !important;
+  margin-left: 43%;
+  margin-top: -1rem;
+}
+
+h4{
+  color: #009CDA;
+  text-decoration: underline;
+}
+
+h2{
+  color: #014248;
+}
+
+.voltar-ao-login{
+  margin-top:1rem;
+}
+
+hr{
+  margin-top: -3rem;
+}
+
+@media (max-width: 1024px){
+
+  .arrumar-card{
+    width: 15rem;
+    height: 30rem;
+  }
+
+  .titulo-4lab{
+    margin-left: 18% !important;
+  }
+
+  .logo{
+    width: 109px;
+    background-color: white !important;
+    margin-left: 27%;
+  }
+  
+  hr{
+    margin-top:43rem;
+  }
+  .espaco-voltar-ao-login{
+    margin-top:3rem;
+  }
+}

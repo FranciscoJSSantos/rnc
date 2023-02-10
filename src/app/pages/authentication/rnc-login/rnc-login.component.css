@@ -1,0 +1,199 @@
+html,
+body {
+    font-family: "Ubuntu", sans-serif;
+}
+
+.global-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFDE59;
+}
+
+.card-body{
+    width: 305px;
+}
+
+form {
+    padding-top: 10px;
+    font-size: 14px;
+    margin-top: 30px;
+}
+
+.logo {
+    width: 144px;
+    background-color: white !important;
+    align-items:center;
+}
+
+
+
+#botao-entrar {
+    background-color: #FFDE59!important;
+    color: black;
+    font-weight: bold !important;
+    font-size: 14px;
+    transform: translateY(10px);
+    border: transparent !important;
+    width: 160px;
+    margin-left: 33px;
+    margin-bottom: 1%;
+}
+
+#a-esqueci-senha {
+    float: right;
+    font-size: 11px;
+    text-decoration: underline;
+    font-weight: 500;
+    color: #007CC3;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+#sobre-nos {
+    float: left;
+    font-size: 11px;
+    text-decoration: underline;
+    font-weight: 500;
+    color: #007CC3;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+#exampleInputEmail1,
+#exampleInpuPassword1 {
+    text-align: center;
+}
+
+.signup {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.mat-h2, .mat-title, .mat-typography h2 {
+    font: 500 20px/32px Roboto, "Helvetica Neue", sans-serif;
+    letter-spacing: normal;
+}
+
+@media (max-width: 1334px){
+    .logo {
+        height: 136px;
+    }
+}
+
+
+
+/*PART OF FLOATING ANIMATION*/
+
+.section_login {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+ul#shape {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+
+ul#shape li#green {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 40px;
+  height: 40px;
+  background-color: greenyellow;
+  bottom: -200px;
+
+  animation: floating 25s infinite linear;
+}
+
+ul#shape li#yellow {
+  position: absolute;
+  display: block;
+  list-style: none;
+  width: 40px;
+  height: 40px;
+  background-color: yellow;
+  bottom: -200px;
+
+  animation: floating 25s infinite linear;
+}
+
+ul#shape li#green:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 25%;
+  animation-delay: 0.1s;
+}
+
+ul#shape li#yellow:nth-child(2) {
+  width: 20px;
+  height: 20px;
+  left: 95%;
+  animation-delay: 10s;
+}
+
+ul#shape li#green:nth-child(3) {
+  width: 70px;
+  height: 70px;
+  left: 75%;
+  animation-delay: 18s;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-flex {
+  background-color: #f9fafb;
+}
+ul#shape li#yellow:nth-child(4) {
+  width: 30px;
+  height: 30px;
+  left: 10%;
+  animation-delay: 5s;
+}
+
+ul#shape li#green:nth-child(5) {
+  width: 40px;
+  height: 40px;
+  left: 60%;
+  animation-delay: 8s;
+}
+
+ul#shape li#yellow:nth-child(6) {
+  width: 90px;
+  height: 90px;
+  left: 84%;
+  animation-delay: 1s;
+}
+
+ul#shape li#green:nth-child(7) {
+  width: 50px;
+  height: 50px;
+  left: 50%;
+  animation-delay: 15s;
+}
+
+ul#shape li#yellow:nth-child(8) {
+  width: 100px;
+  height: 100px;
+  left: 40%;
+  animation-delay: 6s;
+}
+
+@keyframes floating {
+  from {
+    transform:  translateY(0) rotate(0deg);
+    opacity: 1;
+    border-radius: 100%;
+  }
+
+  to {
+    transform:  translateY(-1000px) rotate(720deg);
+    opacity: 0;
+    border-radius: 100%;
+  }
+}

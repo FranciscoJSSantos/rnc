@@ -1,0 +1,35 @@
+[type=button]:not(:disabled),
+[type=reset]:not(:disabled),
+[type=submit]:not(:disabled),
+button:not(:disabled) {
+    cursor: pointer;
+    background-color: transparent;
+}
+
+button {
+    border-color: transparent;
+}
+
+.mat-toolbar {
+    background-color: #014248 !important;
+    width: 100%;
+    min-height: 64px;
+    max-height: 64px;
+}
+
+.menu-4lab {
+    color: white;
+}
+
+.botao-menu {
+    background-color: white !important;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.icone-account-circle {
+    margin-right: 1rem;
+}

@@ -1,0 +1,66 @@
+.btnAcao{
+  color: black;
+  background-color: #F5D556;
+  margin-left: 47% !important;
+  margin-bottom: 1rem;
+}
+
+.btnAcaoVoltar{
+  color: black;
+  background-color: #F5D556;
+  margin-left: 2%;
+  margin-bottom: 1rem;
+}
+
+.editar-meus-dados{
+  margin-left: 7rem;
+}
+
+.clear{
+  margin-left: 5rem;
+  margin-top: -0.5rem;
+  margin-right: 1rem;
+  font-size: 2rem;
+}
+
+.passo-plano{
+  margin-left: -0.5rem;
+}
+
+@media (max-width: 640px){
+  .arrumar-card{
+    width: 15rem;
+    height: 27rem;
+  }
+
+  .btn-amarelo{
+    margin-left: -19%;
+  }
+  
+  .editar-meus-dados{
+    margin-left: 1rem;
+  }
+
+  .clear{
+    margin-left: 1rem;
+    margin-top: -0.5rem;
+    margin-right: 1rem;
+    font-size: 2rem;
+  }
+
+  .content-div{
+    display: block;
+      margin: 0px -34px;
+      padding: 0 24px;
+      max-height: 65vh;
+      overflow: auto;
+  }
+
+  .btnAcaoVoltar{
+    color: black;
+    background-color: #F5D556;
+    margin-left: 2%;
+    margin-bottom: 1rem;
+  }
+  
+}

@@ -1,0 +1,135 @@
+html,
+body {
+    height: 100%;
+    background: url('../../../../assets/rnc-wallpaper-4.png');
+    font-family: "Roboto", sans-serif;
+}
+
+.global-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+form {
+    font-size: 14px;
+    /*margin-top: 30px;*/
+    margin-top: -10px;
+}
+
+.login-form {
+    width: 31.25rem;
+    height: 37.25rem;
+    margin: 20px;
+    background: white !important;
+    border-radius: 10px!important;
+}
+
+.form-control {
+    display: block;
+    width: 188%;
+}
+
+input[type="email"],
+input[type="password"],
+input[type="nome"],
+input[type="matricula"],
+input[type="setor"] {
+    background-color: white;
+    border: 2px solid 0db8de;
+    border-radius: 15px;
+}
+
+.title{
+    font-weight: 900;
+}
+
+.logo {
+    width: 128px;
+    margin: 32px auto;
+    font-weight: 900;
+}
+
+#botao-entrar-2 {
+    background-color: #FFDE59!important;
+    color: black;
+    font-weight: bold !important;
+    font-size: 14px;
+    transform: translateY(10px);
+    border: transparent !important;
+    width: 160px;
+    margin-bottom: 16%;
+}
+
+#a-voltar-login {
+    background-color: #FFDE59!important;
+    color: black;
+    font-weight: bold !important;
+    transform: translateY(10px);
+    border: transparent !important;
+    float: left;
+    font-size: 11px;
+    font-weight: 500;
+    margin-left: 2px;
+    margin-top: 54px;
+    width: 147px
+}
+
+#exampleInputEmail1,
+#exampleInputPassword1,
+#exampleInputNome1,
+#exampleInputMatricula1,
+#exampleInputConfirmPassword1,
+#exampleInputSetor1{
+    text-align: center;
+}
+
+#texto-esqueci-senha {
+    text-align: center;
+}
+
+.signup {
+    text-align: center;
+    padding-top: 25px;
+}
+
+.previous {
+    color: black;
+}
+
+.card-body{
+    width: 472px;
+}
+@media screen and (max-width: 703px) {
+    .col-sm{
+        margin-bottom: -1.8rem;
+        margin-top: -17px;
+        padding: 1.2rem;
+    }
+    #botao-entrar-2{
+        margin-bottom: 5px;
+        margin-top: -2px;
+    }
+    .voltar-login-link{
+        margin-top: -15px;
+    }
+    .card-body{
+        width: 329px;
+    }
+}
+
+@media screen and (max-width: 375px){
+    .card{
+        max-height: 39rem
+    }
+    
+    .title{ 
+        margin-top: -1rem
+    }
+    
+    #botao-entrar-2{ 
+        margin-top: -5px
+    }
+}

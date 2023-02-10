@@ -1,0 +1,198 @@
+.cartao{
+  width: 63%;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-ripple .mat-ripple-element {
+  opacity: 0.03 !important;
+  background-color: #2FC99F!important;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #2FC99F;
+}
+
+.onde{
+  display: none;
+}
+
+.qual{
+  display: none;
+}
+
+.outro{
+  display: none;
+}
+
+
+.OjOEXb,
+.ZizeYd,
+.O7utsb,
+.ZmqAt {
+  height: 1%;
+  left: 0;
+  position: absolute;
+  top: -15px;
+  width: 100%;
+  background-color: #014248;
+  border-radius: 5px;
+}
+
+button mat-icon{
+  font-size: 1.8rem !important;
+  margin-top: -0.5rem !important;
+}
+
+.nome-do-form{
+  text-align: center;
+  margin: 24px;
+}
+
+.nome-do-form h1{
+  font-weight: bold;
+}
+
+.invisible{
+  display: none;
+}
+
+h2.sessao{
+  text-align: center;
+}
+
+section{
+  margin-left: 42px;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 42px;
+}
+
+mat-radio-group{
+  text-align: center;
+  display: flex;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.porque-procurou-o-laboratorio{
+  text-align: center;
+  display: grid;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.o-quao-satisfeito-voce-esta{
+  text-align: center;
+  display: grid;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.o-quao-satisfeito-voce-esta mat-radio-button {
+  margin-top: 2rem;
+}
+
+.porque-procurou-o-laboratorio mat-radio-button {
+  margin-top: 2rem;
+}
+
+mat-radio-group mat-form-field{
+  width: 14rem;
+  text-align: inherit;
+  margin-left: 6rem;
+}
+
+label {
+  font-weight: bold;
+  font-size: 16px;
+  display: flex;
+}
+
+.ScrollStyle
+{
+  max-height: 100%;
+  overflow-y: scroll;
+  overflow-x: auto;
+}
+
+.radio-button-show{
+  display: none;
+}
+
+.favor-informar{
+  display: grid;
+  width: 29rem;
+  margin: 0 auto;
+}
+
+.btnAcao {
+  color: black;
+  background-color: #F5D556;
+  margin: 0 auto;
+  width: 20%;
+  font-size: 1rem;
+}
+
+.button-enviar{
+  display: flex;
+  text-align: center;
+}
+
+
+@media screen and (max-width: 1400px) {
+  .ScrollStyle {
+    max-height: 89%;
+    overflow-y: scroll;
+  }
+
+  mat-radio-group{
+    text-align: center;
+    display: grid;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-top: 15px;
+  }
+
+
+  .porque-procurou-o-laboratorio{
+    text-align: center;
+    display: grid;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    white-space: normal;
+  }
+
+  .porque-procurou-o-laboratorio mat-radio-button {
+    margin-top: 2rem;
+  }
+
+  mat-radio-group mat-form-field{
+    margin-left: 2rem;
+  }
+
+  .favor-informar{
+    width: 16rem;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 0px;
+  }
+
+  section{
+    margin-left: 0px;
+  }
+
+  .cartao{
+    width: 92%;
+  }
+
+  .OjOEXb,
+  .ZizeYd,
+  .O7utsb,
+  .ZmqAt {
+    height: 28px;
+  }
+}

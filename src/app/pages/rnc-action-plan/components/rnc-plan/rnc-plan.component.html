@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="d-flex justify-content-center">
+    <h2 mat-dialog-title class="editar-meus-dados">Perguntas do Plano:</h2>
+    <mat-icon align="end" mat-dialog-close class="clear">clear</mat-icon>
+  </div>
+</div>
+<div class="justify-content-center">
+  <h3 class="nome-do-plano">{{actionsPlans.name}}</h3>
+</div>
+<mat-divider></mat-divider>
+<br>
+<mat-dialog-content class="mat-typography arrumar-card">
+  <div *ngFor="let question of actionsPlans.questions ">
+    <h2>{{ question.value }}</h2>
+  </div>
+</mat-dialog-content>

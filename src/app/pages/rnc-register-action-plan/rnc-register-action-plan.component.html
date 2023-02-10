@@ -1,0 +1,44 @@
+<div class="row">
+    <h2 class="titulo">Novo Plano de Ação</h2>
+</div>
+<div class="ScrollStyle">
+<div class="justify-content-center d-flex">
+    <mat-card class="justify-content-center example-card">
+        <div class="content">
+            <h1 class="cabecalho-card">Novo Plano</h1>
+            <br>
+            <form class="formulario-registro justify-content-center" [formGroup]="registerPlan">
+                <div>
+                    <mat-form-field class="col-sm-4 col-lg-4" appearance="outline">
+                        <mat-label>Digite o Nome do Plano de Ação</mat-label>
+                        <input matInput formControlName="name" />
+                    </mat-form-field>
+                </div>
+                <div class="justify-content-center" formArrayName="questions">
+                    <div *ngFor="let question of registerPlan.get('questions')?.controls;let i = index"
+                        [formGroupName]="i">
+                        <mat-form-field class="col-sm-4 col-lg-4" appearance="outline">
+                            <mat-label> {{ 'Campo ' + (i + 1) }} </mat-label>
+                            <input matInput formControlName="value"/>
+                        </mat-form-field>
+                        <button *ngIf="i != 0" mat-icon-button class="button-delete-question"
+                            (click)="deleteQuestion(i)">
+                            <mat-icon class="icon-delete-question">close</mat-icon>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <div class="d-flex justify-content-center">
+            <mat-divider></mat-divider>
+            <div>
+            <button mat-raised-button class="botao-adicionar" (click)="registerNewQuestion()">
+                ADICIONAR UM CAMPO <mat-icon>add</mat-icon>
+            </button>
+            <button mat-raised-button id="botao-enviar" (click)="save()">CADASTRAR</button>
+        </div>
+    </div>
+        </div>
+    </mat-card>
+</div>
+</div>

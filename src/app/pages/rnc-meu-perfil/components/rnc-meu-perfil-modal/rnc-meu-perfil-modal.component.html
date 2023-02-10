@@ -1,0 +1,28 @@
+<div class="row">
+    <div>
+        <h2 mat-dialog-title class="editar-meus-dados">Alterar  Nome</h2>
+    </div>
+    <div>
+        <mat-icon mat-dialog-close class="clear">clear</mat-icon>
+    </div>
+</div>
+<mat-divider></mat-divider>
+<mat-dialog-content>
+<br/>
+<form class="formulario-meu-perfil" [formGroup]="meuPerfilForm">
+    <div class="col-12" id="formulario-meu-perfil-modal">
+        <div>
+            <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="newName"/>
+            </mat-form-field>
+        </div>
+    </div>
+</form>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+<mat-dialog-actions>
+    <button mat-raised-button class="btnAcao" (click)="atualizarNome()">
+        <mat-icon>done</mat-icon>&nbsp; Atualizar Nome
+    </button>
+</mat-dialog-actions>

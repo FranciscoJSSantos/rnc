@@ -1,0 +1,27 @@
+<div class="row">
+  <div>
+    <h1 mat-dialog-title class="editar-meus-dados">Verificação</h1>
+  </div>
+  <div>
+    <mat-icon mat-dialog-close class="clear">clear</mat-icon>
+  </div>
+</div>
+  <br/>
+  <mat-divider></mat-divider>
+  <br/>
+    <mat-dialog-content class="mat-typography arrumar-card">
+      <div class="row">
+        <form class="effectiveness-form" novalidate>
+          <mat-form-field class="col-sm eficacia" appearance="outline">
+            <mat-label>Verificar Eficácia</mat-label>
+            <input matInput [formControl]="description"/>
+          </mat-form-field>
+      </form>
+    </div>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button class="btnAcao justify-content-end" (click)="verifyEffectiveness()">
+          Verificar
+          <mat-icon>arrow_forward</mat-icon>
+          </button>
+  </mat-dialog-actions>

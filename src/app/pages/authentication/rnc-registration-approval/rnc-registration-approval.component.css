@@ -1,0 +1,82 @@
+.example-card {
+  background-clip: padding-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: inline-flex;;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  height: 14.5rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 19.75rem;
+  border: .0625rem solid #dadce0;
+  border-top: .0625rem solid #e0e0e0;
+  line-height: 0;
+  color: rgba(0,0,0,0.87);
+  font-family: 'Roboto',Helvetica,Arial,sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-left: 3rem;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+  margin-block-start: 2em;
+  margin-block-end: 0em;
+  margin-inline-end: 0px;
+}
+
+.mensagem-nenhum-usuario{
+  margin-top: 10rem;
+  font-style: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.btnLimpar{
+  margin-left: 15%;
+  margin-top: 5%;
+  background-color: red !important;
+  color: white;
+}
+
+.btnAcao{
+  color: white;
+  background-color: #008001;
+}
+
+.itens-cartao{
+  margin-left: 1rem;
+}
+
+.item-registration{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
+  max-width: 30ch;
+  overflow-x: visible;
+}
+
+.form-registration{
+  margin-left: 1rem;
+}
+
+.tela{
+  flex-wrap: wrap;
+}
+
+@media (max-width: 640px){
+  .example-card{
+    margin-left: 0rem !important;
+    margin-top: 1rem;
+  }
+
+}
+
+.ScrollStyle
+{
+    height:91%;
+    overflow-y: scroll;
+}

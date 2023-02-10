@@ -1,0 +1,15 @@
+.clear{
+  margin-left: 2rem;
+}
+
+.editar-meus-dados{
+  margin-left: 0.5rem;
+}
+
+.nome-do-plano{
+  font-weight: bold;
+  align-items: center;
+  margin-left: 5rem;
+  width: 33%;
+  overflow-x: auto;
+}

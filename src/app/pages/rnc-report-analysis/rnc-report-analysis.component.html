@@ -1,0 +1,85 @@
+<div class="row">
+    <h2 class="titulo">Análise de Relatório</h2>
+</div>
+<div class="row text-center">
+    <div class="col-md-4">
+        <div class="btn-group">
+            <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="findOccurrenceForReport(); closeOpenMonthViewDay()">
+                Mês Anterior
+            </div>
+            <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate"
+                (viewDateChange)="findOccurrenceForReport()">
+                Hoje
+            </div>
+            <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+                (viewDateChange)="findOccurrenceForReport(); closeOpenMonthViewDay()">
+                Próximo Mês
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3 class="data-mes">{{ viewDate | calendarDate:(view + 'ViewTitle'):locale:weekStartsOn }}</h3>
+    </div>
+    <div class="col-md-4">
+        <form [formGroup]="setorForm">
+            <mat-form-field>
+                <mat-label>Setor</mat-label>
+                <mat-select (selectionChange)="findOccurrenceForReport()" formControlName="setor">
+                    <mat-option *ngFor="let setor of setores" [value]="setor.id">
+                        {{setor.name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </form>
+    </div>
+</div>
+<br />
+<div [ngSwitch]="view" class="ScrollStyle">
+    <mwl-calendar-month-view [locale]="locale" [refresh]="refresh" *ngSwitchCase="CalendarView.Month"
+        [viewDate]="viewDate" [events]="events" [activeDayIsOpen]="activeDayIsOpen"
+        (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)"
+        (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+    <mwl-calendar-week-view [locale]="locale" *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-week-view>
+    <mwl-calendar-day-view [locale]="locale" *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+        (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-day-view>
+</div>
+
+<ng-template #modalContent let-close="close">
+    <div class="modal-header">
+        <h3 class="modal-title" mat-dialog-title>Ocorrência - detalhes</h3>
+        <button title="button" type="button" class="close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div>
+          <h3>
+            No dia <strong>30/11/2021</strong> , às <strong>19:15</strong>, o funcionário <strong>Francisco José</strong> , do setor de <strong>Fornecedores</strong>,
+            sendo a sua supervisora <strong>Angela Maria</strong>, realizou/presenciou a(s) seguinte(s) ocorrências(s):
+            <strong>Atraso na liberação do laudo</strong>, ocorrida(s) no setor(es) <strong>Fornecedores</strong>, supervisionado(s) por <strong>Angela Maria</strong>,
+            sendo essa(s) ocorrências(s) caracterizada(s) como: <strong>De Processo</strong>. E classificada(s) como: <strong>Não conformidade</strong>.
+            A(s) pessoa(s) envolvida(s) na ocorrência além da funcionária é/são: <strong>a</strong>. A ação imediata tomada pela funcionária
+            foi <strong>a</strong>. Após análise da(s) não conformidade(s) acometida(s), a supervisora do setor do ocorrido, <strong>Angela Maria</strong>,
+            descreveu como análise da causa raiz o seguinte: <strong>a</strong>. Na análise da ocorrência, foram respondidos os 5 porquês.
+            <strong>1º Porquê? a</strong> ; <strong>2º Porquê? a</strong>;<strong>3º Porquê? a</strong>; <strong>4º Porquê? a</strong>; <strong>5º Porquê? a</strong>.
+            Após essa análise foi elaborado um plano de
+            ação para visualizar os detalhes de forma mais aprofundada, para solucionar o problema e evitar futuros erros, sendo
+            utilizada a ferramenta <strong>5W2H</strong>, onde foi descrita da seguinte forma: <strong>O que? a; Por que? a; Onde? a; Quando? a; Quem? a; Como? a; Quanto?  a.</strong>
+            A análise de risco foi definida como: <strong> Near miss</strong>. Após o período de espera para verificação da eficácia, foi verificado que: <strong>a</strong>.
+          </h3>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-amarelo" (click)="close(1)">
+            Enviar por e-mail
+        </button>
+        <button type="button" class="btn btn-amarelo" (click)="close()">
+            OK
+        </button>
+    </div>
+</ng-template>

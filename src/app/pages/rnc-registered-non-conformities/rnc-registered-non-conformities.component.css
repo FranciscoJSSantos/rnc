@@ -1,0 +1,207 @@
+.example-card {
+  background-clip: padding-box;
+  display: -webkit-box;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  height: 23.375rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1.5rem;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 22.75rem;
+  border: .0625rem solid #dadce0;
+  border-top: .0625rem solid #e0e0e0;
+  line-height: 0;
+  color: white;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.25rem;
+  margin-left: 2rem;
+  margin-top: 6rem;
+  flex-wrap: wrap;
+  margin-block-start: 2em;
+  margin-block-end: 0em;
+  margin-inline-end: 0px;
+}
+
+.button-container{
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 321px;
+  left: 122px;
+}
+
+.icon-delete {
+  background-repeat: no-repeat;
+  display: inline-block;
+  fill: currentColor;
+  height: 34px;
+  width: 32px;
+  font-size: 34px;
+}
+
+.mat-card .mat-divider-horizontal {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 70px;
+}
+
+mat-select{
+  width: 35%;
+  visibility: hidden;
+}
+
+mat-panel-title b{
+  margin-left: 1rem;
+}
+
+.filter-span{
+  margin-top: 4px;
+}
+
+::ng-deep .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: unset;
+}
+
+::ng-deep .mat-option-pseudo-checkbox.mat-pseudo-checkbox-checked {
+  background-color: #20c997;
+}
+
+.item-nome{
+  overflow-x: auto;
+}
+
+.tela {
+  flex-wrap: wrap;
+}
+
+.mensagem-nenhum-usuario {
+  margin-top: 10rem;
+  font-style: bold;
+  font-size: 2rem;
+  text-align: center;
+}
+
+
+.btnAcao {
+  color: black;
+  background-color: #F5D556;
+}
+
+.btnAcaoRemove {
+  color: black;
+  background-color: #F5D556;
+  margin: 9px 0rem 0rem 288px;
+}
+
+.clear mat-icon{
+  font-size: 2rem !important;
+}
+
+.btnFiltro {
+  color: black;
+  background-color: #F5D556;
+  margin-left: 5.5rem;
+}
+
+.OjOEXb,
+.ZizeYd,
+.O7utsb,
+.ZmqAt {
+  height: 13%;
+  left: 0;
+  position: absolute;
+  top: -3px;
+  width: 100%;
+  background-color: #014248;
+  border-radius: 4px;
+}
+
+.item-registration {
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: clip;
+  width: 17rem;
+}
+
+.item-cartao {
+  margin-left: -5rem;
+}
+
+.itens-cartao {
+  white-space: nowrap;
+  overflow: auto;
+  text-overflow: clip;
+  max-width: 18rem;
+}
+
+.mat-card>:first-child,
+.mat-card-content>:first-child {
+  margin-top: 50px;
+}
+
+.form-registration {
+  margin-left: 1rem;
+}
+
+#botao-de-filtro {
+  background-color: #fff !important;
+  font-size: large;
+  width: 7rem;
+  height: 2.5rem;
+  top: -1rem
+}
+
+.titulo {
+  margin-bottom: 2rem;
+}
+
+.ScrollStyle {
+  max-height: 84%;
+  overflow-y: scroll;
+}
+
+.chip {
+  margin: -22px !important;
+  margin-top: -21px !important;
+  margin-bottom: 3px !important;
+  margin-left: 1px !important;
+  color: #1A1A1A !important;
+}
+
+.mat-chip.mat-standard-chip {
+  background-color: #F5D556;
+  color: #000000 !important;
+}
+
+.clear {
+  color: #F5D556;
+  font-size: 2rem;
+  margin-left: 17rem;
+  margin-top: 5px;
+}
+
+.container-pendencia{
+  position: absolute;
+  bottom: 105px;
+}
+
+@media screen and (max-width: 640px) {
+  .example-card {
+    margin-left: 0rem !important;
+    margin-top: 1rem;
+  }
+
+  .ScrollStyle {
+    max-height: 63%;
+    overflow-y: scroll;
+  }
+}
+
+.textRed {
+  color: red;
+}

@@ -1,0 +1,49 @@
+<div class="row">
+    <h2 class="titulo">Análise de Gráfico</h2>
+</div>
+
+<form [formGroup]="chartForm">
+    <mat-card class="card-test" *ngIf="!chart">
+        <mat-card-header class="card-header-test">
+            <mat-card-title class="card-title-test">
+                <h2>Filtro de Pesquisa</h2>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="card-content-test">
+            <div class="row" style="margin: 15px;">
+                <mat-form-field class="col-lg-6 col-md-6 col-sm-12">
+                    <mat-label>Setor</mat-label>
+                    <mat-select formControlName="setor">
+                        <mat-option *ngFor="let setor of setores" [value]="setor.id">
+                            {{setor.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="col-lg-6 col-md-6 col-sm-12">
+                    <mat-label>Mês</mat-label>
+                    <mat-select formControlName="month">
+                        <mat-option *ngFor="let mes of meses" [value]="mes.id">
+                            {{mes.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+        <mat-card-footer class="card-footer">
+            <div class="row" style="margin-left: 15px;">
+                <div class="justify-content-center">
+                    <button type="button" mat-raised-button (click)="findReport()" class="btn-amarelo">
+                        Pesquisar
+                        <mat-icon>search</mat-icon>
+                      </button>
+                </div>
+                <div class="justify-content-center" style="margin-left: 3%;">
+                    <button type="button" mat-raised-button (click)="sendChartEmailById()" class="btn-amarelo">
+                        Enviar para email
+                        <mat-icon>send</mat-icon>
+                      </button>
+                </div>
+            </div>
+        </mat-card-footer>
+    </mat-card>
+</form>
