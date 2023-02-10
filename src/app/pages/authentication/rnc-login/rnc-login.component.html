@@ -11,10 +11,16 @@
   </ul>
 </div>
 <div class="bg-gray-50 flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="w-full max-w-md space-y-8">
+
+  <div class="relative  w-full max-w-md space-y-8">
     <div>
-      <img class="mx-auto h-12 w-auto" src="../../../../assets/4lab-logo-2.png" alt="Your Company">
-      <h2 class="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">Registro de Não Conformidades</h2>
+      <!-- <img class="mx-auto h-12 w-auto" src="../../../../assets/4lab-logo-2.png" alt="Your Company"> -->
+      <h2 class="login_title mt-6 text-center text-3xl font-bold tracking-tight text-teal-900">RNC</h2>
+      <p class="mt-2 text-center text-sm text-gray-600">
+        Um sistema para
+        <a href="#" class="font-medium text-teal-600 hover:text-teal-500 hover:no-underline">Registro de Não
+          Conformidades</a>
+      </p>
     </div>
     <form (submit)="login()" class="mt-8 space-y-6" [formGroup]="FLabLoginForm" novalidate>
       <input type="hidden" name="remember" value="true">
@@ -38,14 +44,14 @@
       <div class="flex items-center justify-between">
         <div class="text-sm">
           <a (click)="sobreNos();"
-            class="font-bold hover:no-underline font-medium text-teal-600 hover:text-teal-500 cursor-pointer">Sobre
+            class="font-bold hover:no-underline text-teal-600 hover:text-teal-500 cursor-pointer">Sobre
             o
             Projeto</a>
         </div>
 
         <div class="text-sm">
           <a [routerLink]="['/forgot-password']"
-            class="font-bold hover:no-underline font-medium text-teal-600 hover:text-teal-500">Esqueci minha
+            class="font-bold hover:no-underline text-teal-600 hover:text-teal-500">Esqueci minha
             senha</a>
         </div>
       </div>
@@ -60,8 +66,7 @@
       <div class="flex flex-col w-full border-opacity-50">
         <div class="divider">OU</div>
         <div class="text-sm text-center">
-          <a [routerLink]="['/register']"
-            class="font-bold hover:no-underline font-medium text-teal-600 hover:text-teal-500">Não
+          <a [routerLink]="['/register']" class="font-bold hover:no-underline text-teal-600 hover:text-teal-500">Não
             possui
             conta?&nbsp; Cadastre-se</a>
         </div>
