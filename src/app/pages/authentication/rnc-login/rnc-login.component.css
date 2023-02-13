@@ -110,7 +110,7 @@ ul#shape li#green {
   background-color: greenyellow;
   bottom: -200px;
 
-  animation: floating 25s infinite linear;
+  animation: floating 15s infinite linear;
 }
 
 ul#shape li#yellow {
@@ -122,7 +122,7 @@ ul#shape li#yellow {
   background-color: yellow;
   bottom: -200px;
 
-  animation: floating 25s infinite linear;
+  animation: floating 15s infinite linear;
 }
 
 ul#shape li#green:nth-child(1) {
