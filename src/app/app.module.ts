@@ -58,6 +58,7 @@ import { RncCardOfSatisfactionSurveyComponent } from './pages/rnc-card-of-satisf
 import { RncModalSatisfactionSurveyComponent } from './pages/rnc-card-of-satisfaction-survey/components/rnc-modal-satisfaction-survey/rnc-modal-satisfaction-survey.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgxMaskModule } from 'ngx-mask';
+import { ShapeColorComponent } from './pages/shape-color/shape-color.component';
 registerLocaleData(ptBr)
 
 @NgModule({
@@ -87,7 +88,8 @@ registerLocaleData(ptBr)
     RncEffectivenessVerificationComponent,
     RncSatisfactionSurveyComponent,
     RncCardOfSatisfactionSurveyComponent,
-    RncModalSatisfactionSurveyComponent
+    RncModalSatisfactionSurveyComponent,
+    ShapeColorComponent
   ],
   imports: [
     BrowserModule,
