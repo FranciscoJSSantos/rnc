@@ -1,0 +1,12 @@
+{
+   "api/Setor": [
+      {
+         "id": "1",
+         "name": "coleta"
+      },
+      {
+         "id": "2",
+         "name": "base"
+      }
+   ]
+}

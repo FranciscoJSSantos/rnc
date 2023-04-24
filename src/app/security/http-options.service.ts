@@ -12,7 +12,7 @@ export class HttpOptionsService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+     
         'Access-Control-Allow-Origin': '*',
       })
     };
@@ -22,7 +22,7 @@ export class HttpOptionsService {
     return {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
+
         'Access-Control-Allow-Origin': '*',
       }),
       responseType: 'text'

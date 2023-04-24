@@ -1,21 +1,20 @@
-import { Setor } from './../../../models/setor.model';
-import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
-import { Subject } from 'rxjs';
-import { UserService } from 'src/app/services/user.service';
-import { FormControl } from '@angular/forms';
-import { SetorService } from 'src/app/services/setor.service';
-import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { Location } from '@angular/common';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { Component, OnInit } from '@angular/core';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { SetorService } from 'src/app/services/setor.service';
+import { UserService } from 'src/app/services/user.service';
+import { Setor } from './../../../models/setor.model';
+// import { ErrorStateMatcher } from '@angular/material/core';
 
-export class MyErrorStateMatcher implements ErrorStateMatcher {
-  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-    const isSubmitted = form && form.submitted;
-    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-  }
-}
+// export class MyErrorStateMatcher implements ErrorStateMatcher {
+//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+//     const isSubmitted = form && form.submitted;
+//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+//   }
+// }
 
 @Component({
   selector: 'rnc-register',
@@ -28,7 +27,7 @@ export class RncRegisterComponent implements OnInit {
   setores: Setor[] = [];
   registerForm: FormGroup;
   disableSelect = new FormControl(false);
-  matcher = new MyErrorStateMatcher();
+  // matcher = new MyErrorStateMatcher();
   profiles: { label: string, value: string }[] = [
     {
       label: 'Funcionário',

@@ -3,8 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  url: 'https://localhost:5001',
+  production: true,
+  url: 'http://localhost:3001',
   title: '4lab'
 }
 
