@@ -1,12 +1,12 @@
-import { AlertComponent } from 'src/app/components/alert/alert.component';
-import { SessionService } from './../../../security/session.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { JwtServiceService } from 'src/app/security/jwt-service.service';
 import { MatDialog } from '@angular/material/dialog';
-import { RncAboutUsComponent } from './components/rnc-about-us/rnc-about-us.component';
+import { Router } from '@angular/router';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { JwtServiceService } from 'src/app/security/jwt-service.service';
 import { environment } from './../../../../environments/environment';
+import { SessionService } from './../../../security/session.service';
+import { RncAboutUsComponent } from './components/rnc-about-us/rnc-about-us.component';
 
 @Component({
   selector: 'rnc-login',
@@ -24,8 +24,8 @@ export class RncLoginComponent implements OnInit {
     private _jwt: JwtServiceService,
     private _session: SessionService,
     private _alert: AlertComponent,
-    private dialog: MatDialog,
-  ) { }
+    private dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
     this.FLabLoginForm = this._formBuilder.group({
@@ -36,18 +36,17 @@ export class RncLoginComponent implements OnInit {
 
   login(): void {
     //temporário
-    if (this.FLabLoginForm.valid) {
-      this._jwt.login(this.FLabLoginForm.value);
-      error => this._alert.show('Erro', error.error, 'error');
-    } else {
-      this._alert.show('Atenção', 'Por favor, preencha todos os campos!', 'warning');
-    }
+    // if (this.FLabLoginForm.valid) {
+    // this._jwt.login(this.FLabLoginForm.value);
+    // error => this._alert.show('Erro', error.error, 'error');
+    this._router.navigateByUrl('/occurrences');
+    // } else {
+    //   this._alert.show('Atenção', 'Por favor, preencha todos os campos!', 'warning');
+    // }
   }
 
   sobreNos() {
-    let dialogRef = this.dialog.open(
-      RncAboutUsComponent
-    );
+    let dialogRef = this.dialog.open(RncAboutUsComponent);
     dialogRef.afterClosed();
   }
 }

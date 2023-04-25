@@ -1,93 +1,105 @@
-import { PermissionGuard } from './guards/permission.guard';
-import { RncRegisteredNonConformitiesComponent } from './pages/rnc-registered-non-conformities/rnc-registered-non-conformities.component';
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { LoginGuard } from './guards/login.guard';
+import { PermissionGuard } from './guards/permission.guard';
+import { Permission } from './models/permision.enum';
 import { RncForgotPasswordComponent } from './pages/authentication/rnc-forgot-password/rnc-forgot-password.component';
 import { RncLoginComponent } from './pages/authentication/rnc-login/rnc-login.component';
 import { RncRegisterComponent } from './pages/authentication/rnc-register/rnc-register.component';
 import { RncRegistrationApprovalComponent } from './pages/authentication/rnc-registration-approval/rnc-registration-approval.component';
-import { AuthGuard } from './guards/auth.guard';
-import { LoginGuard } from './guards/login.guard';
-import { RncMeuPerfilComponent } from './pages/rnc-meu-perfil/rnc-meu-perfil.component';
-import { Permission } from './models/permision.enum';
-import { Error500Component } from './pages/error500/error500.component'
-import { RncSatisfactionSurveyComponent } from './pages/rnc-satisfaction-survey/rnc-satisfaction-survey.component';
+import { Error500Component } from './pages/error500/error500.component';
 import { RncCardOfSatisfactionSurveyComponent } from './pages/rnc-card-of-satisfaction-survey/rnc-card-of-satisfaction-survey.component';
+import { RncMeuPerfilComponent } from './pages/rnc-meu-perfil/rnc-meu-perfil.component';
+import { RncRegisteredNonConformitiesComponent } from './pages/rnc-registered-non-conformities/rnc-registered-non-conformities.component';
+import { RncSatisfactionSurveyComponent } from './pages/rnc-satisfaction-survey/rnc-satisfaction-survey.component';
 
 const routes: Routes = [
   {
-    path: "login",
+    path: 'login',
     component: RncLoginComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
   },
   {
-    path: "register",
+    path: 'register',
     component: RncRegisterComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
   },
   {
-    path: "forgot-password",
+    path: 'forgot-password',
     component: RncForgotPasswordComponent,
-    canActivate: [LoginGuard]
+    canActivate: [LoginGuard],
   },
   {
     path: 'registration-approval',
     data: {
-      permissions: [Permission.ANALISTA_DA_QUALIDADE]
+      permissions: [Permission.ANALISTA_DA_QUALIDADE],
     },
     canActivateChild: [PermissionGuard],
     children: [
       {
         path: '',
-        component: RncRegistrationApprovalComponent
-      }
-    ]
+        component: RncRegistrationApprovalComponent,
+      },
+    ],
   },
   {
     path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'meu-perfil',
-    component: RncMeuPerfilComponent
+    component: RncMeuPerfilComponent,
   },
   {
     path: 'occurrences', //trocar nome da pasta
-    loadChildren: () => import('./pages/rnc-non-conformities/rnc-non-conformities.module').then(m => m.RncNonConformitiesModule),
-    canActivate: [AuthGuard]
+    loadChildren: () =>
+      import('./pages/rnc-non-conformities/rnc-non-conformities.module').then(
+        (m) => m.RncNonConformitiesModule
+      ),
   },
   {
     path: '4lab-report-analysis',
-    loadChildren: () => import('./pages/rnc-report-analysis/rnc-report-analysis.module').then(m => m.RncReportAnalysisModule),
-    canActivate: [AuthGuard]
+    loadChildren: () =>
+      import('./pages/rnc-report-analysis/rnc-report-analysis.module').then(
+        (m) => m.RncReportAnalysisModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: '4lab-chart',
-    loadChildren: () => import('./pages/rnc-chart/rnc-chart.module').then(m => m.RncChartModule),
-    canActivate: [AuthGuard]
+    loadChildren: () =>
+      import('./pages/rnc-chart/rnc-chart.module').then(
+        (m) => m.RncChartModule
+      ),
+    canActivate: [AuthGuard],
   },
   {
     path: 'registered-non-conformities',
     data: {
-      permissions: [Permission.ANALISTA_DA_QUALIDADE, Permission.RESPONSAVEL_DO_SETOR, Permission.RESPONSAVEL_TECNICO]
+      permissions: [
+        Permission.ANALISTA_DA_QUALIDADE,
+        Permission.RESPONSAVEL_DO_SETOR,
+        Permission.RESPONSAVEL_TECNICO,
+      ],
     },
     canActivateChild: [PermissionGuard],
     children: [
       {
         path: '',
-        component: RncRegisteredNonConformitiesComponent
-      }
-    ]
+        component: RncRegisteredNonConformitiesComponent,
+      },
+    ],
   },
   {
     path: '4lab-action-plan',
-    component: Error500Component
+    component: Error500Component,
     //component: RncActionPlanComponent
   },
   {
     path: '4lab-register-action-plan',
-    component: Error500Component
+    component: Error500Component,
     //component: RncRegisterActionPlanComponent
   },
   // {
@@ -96,21 +108,20 @@ const routes: Routes = [
   // },
   {
     path: 'error500',
-    component: Error500Component
+    component: Error500Component,
   },
   {
     path: 'satisfaction-survey',
-    component: RncSatisfactionSurveyComponent
+    component: RncSatisfactionSurveyComponent,
   },
   {
     path: 'card-of-satisfaction-survey',
-    component: RncCardOfSatisfactionSurveyComponent
-  }
+    component: RncCardOfSatisfactionSurveyComponent,
+  },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
