@@ -9,6 +9,7 @@ import { RncLoginComponent } from './pages/authentication/rnc-login/rnc-login.co
 import { RncRegisterComponent } from './pages/authentication/rnc-register/rnc-register.component';
 import { RncRegistrationApprovalComponent } from './pages/authentication/rnc-registration-approval/rnc-registration-approval.component';
 import { Error500Component } from './pages/error500/error500.component';
+import { HomeComponent } from './pages/home/home.component';
 import { RncCardOfSatisfactionSurveyComponent } from './pages/rnc-card-of-satisfaction-survey/rnc-card-of-satisfaction-survey.component';
 import { RncMeuPerfilComponent } from './pages/rnc-meu-perfil/rnc-meu-perfil.component';
 import { RncRegisteredNonConformitiesComponent } from './pages/rnc-registered-non-conformities/rnc-registered-non-conformities.component';
@@ -23,6 +24,11 @@ const routes: Routes = [
   {
     path: 'register',
     component: RncRegisterComponent,
+    canActivate: [LoginGuard],
+  },
+  {
+    path: 'home',
+    component: HomeComponent,
     canActivate: [LoginGuard],
   },
   {

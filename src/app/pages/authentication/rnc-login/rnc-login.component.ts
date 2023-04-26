@@ -39,7 +39,7 @@ export class RncLoginComponent implements OnInit {
     // if (this.FLabLoginForm.valid) {
     // this._jwt.login(this.FLabLoginForm.value);
     // error => this._alert.show('Erro', error.error, 'error');
-    this._router.navigateByUrl('/occurrences');
+    this._router.navigateByUrl('/home');
     // } else {
     //   this._alert.show('Atenção', 'Por favor, preencha todos os campos!', 'warning');
     // }
