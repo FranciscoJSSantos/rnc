@@ -1,20 +1,20 @@
-import { Archive, NonConformitieRegister, Occurrence } from './../../models/non-conformitie-register';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators, FormGroupDirective, NgForm, FormControl } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, ErrorStateMatcher, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MatStepper } from '@angular/material/stepper';
+import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
+import { Subject } from 'rxjs/internal/Subject';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { Classification } from 'src/app/models/classification.model';
+import { OccurrenceRisk } from 'src/app/models/occurence-risk.model';
+import { Setor } from 'src/app/models/setor.model';
+import { TypesClassification } from 'src/app/models/types-classification.model';
+import { Types } from 'src/app/models/types.model';
 import { NonConformitieService } from 'src/app/services/non-conformitie.service';
 import { SetorService } from 'src/app/services/setor.service';
-import { Setor } from 'src/app/models/setor.model';
-import { MatStepper } from '@angular/material/stepper';
-import { Subject } from 'rxjs/internal/Subject';
-import { FileSelectDirective, FileUploader } from 'ng2-file-upload';
-import { MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
-import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, ErrorStateMatcher } from '@angular/material/core';
-import { OccurrenceRisk } from 'src/app/models/occurence-risk.model';
-import { Types } from 'src/app/models/types.model';
-import { TypesClassification } from 'src/app/models/types-classification.model';
-import { Classification } from 'src/app/models/classification.model';
+import { Archive, NonConformitieRegister, Occurrence } from './../../models/non-conformitie-register';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -99,7 +99,7 @@ export class RncNonConformitiesComponent implements OnInit {
   @ViewChild('stepper') stepper: MatStepper;
   peopleInput$ = new Subject<string>();
   matcher = new MyErrorStateMatcher();
-  public uploader: FileUploader;
+
   response: string;
 
   constructor(
@@ -107,24 +107,9 @@ export class RncNonConformitiesComponent implements OnInit {
     private _alert: AlertComponent,
     private _occurrenceService: NonConformitieService,
     private _setorService: SetorService) {
-    this.uploader = new FileUploader({
-      url: "teste",
-      disableMultipart: true, // 'DisableMultipart' must be 'true' for formatDataFunction to be called.
-      formatDataFunctionIsAsync: true,
-      formatDataFunction: async (item) => {
-        return new Promise((resolve, reject) => {
-          resolve({
-            name: item._file.name,
-            length: item._file.size,
-            contentType: item._file.type,
-            date: new Date()
-          });
-        });
-      }
-    });
+
     this.response = '';
 
-    this.uploader.response.subscribe(res => this.response = res);
   }
 
   ngOnInit(): void {
@@ -134,65 +119,6 @@ export class RncNonConformitiesComponent implements OnInit {
     this.findAllTypesClassification();
     this.findAllTypes();
     this.findAllClassifications();
-  }
-
-  abrirAnexos() {
-    document.getElementById('anexo').click();
-  }
-
-  uploadFile(event: InputEvent) {
-    const fileUpload = event[0];
-
-    const reader = new FileReader();
-    reader.readAsDataURL(fileUpload);
-
-    const occurrenceDescription = this.evidence.get("description").value;
-
-    if (!occurrenceDescription) {
-      this._alert.show('Aviso', 'Necessário informar qual ocorrência!', 'warning');
-      return;
-    }
-
-    const occurrences: Occurrence[] = this.principal.get("occurrences").value;
-
-    reader.onload = () => {
-      let base64 = reader.result.toString();
-      base64 = base64.slice(base64.indexOf(',') + 1);
-
-      const occurrence: Occurrence = Array.from(occurrences).filter((occur: Occurrence) => occur.description == occurrenceDescription)[0];
-
-      if (!occurrence.archives)
-        occurrence.archives = [];
-
-      const archive: any = { file: base64, fileName: fileUpload.name, fileType: fileUpload.type };
-
-
-      this.archives.push({ ...archive, occurrenceDescription: occurrence.description, size: fileUpload.size });
-      occurrence.archives.push(archive);
-    }
-  }
-
-  removeFile(item: any) {
-    if (item) {
-      const occurrenceDescription = this.evidence.get("description").value;
-      const occurrences: Occurrence[] = this.principal.get("occurrences").value;
-      const occurrence: Occurrence = Array.from(occurrences).filter((occur: Occurrence) => occur.description == occurrenceDescription)[0];
-
-      const fileName = item.fileName;
-
-      if (occurrence && occurrence.archives) {
-        this.archives = this.archives.filter(f => f.fileName !== fileName);
-        occurrence.archives = occurrence.archives.filter(f => f.fileName !== fileName);
-      }
-    }
-  }
-
-  removeFileModal(item: any) {
-    this._alert.confirmacao("Confirmação", "Deseja remover esse anexo?", "Confirmar", "O anexo foi removido.", "Removido")
-      .then(() => {
-        this.removeFile(item);
-      })
-      .catch(() => false);
   }
 
   setDate(value: string) {
@@ -211,11 +137,6 @@ export class RncNonConformitiesComponent implements OnInit {
       occurrences: this._formBuilder.array([], Validators.required),
       occurrenceTypeId: [null, Validators.required],
       occurrenceClassification: [null, Validators.required],
-    });
-
-    this.evidence = this._formBuilder.group({
-      archive: [null],
-      description: [null]
     });
 
     this.description = this._formBuilder.group({
@@ -239,10 +160,6 @@ export class RncNonConformitiesComponent implements OnInit {
     this.description.markAllAsTouched();
   }
 
-  validateEvidence() {
-    this.evidence.markAllAsTouched();
-  }
-
   validarCampo() {
     return (this.description.get('registerDate').dirty || this.description.get('registerDate').touched) && !this.description.get('registerDate').valid;
   }
@@ -255,7 +172,7 @@ export class RncNonConformitiesComponent implements OnInit {
   }
 
   saveOccurrence() {
-    if (this.principal.valid && this.description.valid && this.acaoImediata.valid && this.evidence.valid) {
+    if (this.principal.valid && this.description.valid && this.acaoImediata.valid) {
       let occurrence: NonConformitieRegister = {
         occurrences: this.validateOC(),
         setor: this.description.value.setor,
@@ -268,15 +185,15 @@ export class RncNonConformitiesComponent implements OnInit {
         occurrenceClassification: this.principal.value.occurrenceClassification,// TODO: Ajustar quando sair a tarefa desse campo
       }
 
-      this._occurrenceService.save(occurrence)
-        .subscribe(() => {
+      // this._occurrenceService.save(occurrence)
+      //   .subscribe(() => {
           this._alert.show('Cadastro', 'Ocorrência cadastrada com sucesso!', 'success');
           //this.stepper.reset();
           setTimeout(() => {window.location.reload();}, 1500);
           //sessionStorage
-        }, error => {
-          this._alert.show('Cadastro', error.error, 'error');
-        });
+        // }, error => {
+        //   this._alert.show('Cadastro', error.error, 'error');
+        // });
     } else {
       this._alert.show('Aviso', 'Favor preencher os campos obrigatórios!', 'warning');
     }

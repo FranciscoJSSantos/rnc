@@ -78,25 +78,35 @@ export class RncRegisterComponent implements OnInit {
   }
 
   save() {
-    if (this.registerForm.valid) {
-      this._userService.save(this.registerForm.value)
-        .subscribe(() => {
+    // if (this.registerForm.valid) {
+    //   this._userService.save(this.registerForm.value)
+    //     .subscribe(() => {
           this._alert.show('Cadastro', 'Usuário cadastrado com sucesso!', 'success');
           this._router.navigateByUrl('/login');
-        }, error => this._alert.show('Erro', error.error, 'error'),
-        )
-    } else {
-      this._alert.show('Atenção', 'Por favor, preencha todos os campos!', 'warning')
-    }
+    //     }, error => this._alert.show('Erro', error.error, 'error'),
+    //     )
+    // } else {
+    //   this._alert.show('Atenção', 'Por favor, preencha todos os campos!', 'warning')
+    // }
   }
 
   findAllSetor() {
-    this._setorService.getAllSetor()
-      .subscribe(setores => {
-        this.setores = setores;
-      }, error => {
-        this._alert.show('Erro', error.error, 'error');
-      })
+    this.setores = [
+      {
+        "id": "1",
+        "name": "Coleta"
+      },
+      {
+        "id": "2",
+        "name": "Aumoxarifado"
+      }
+    ]
+    // this._setorService.getAllSetor()
+    //   .subscribe(setores => {
+    //     this.setores = setores;
+    //   }, error => {
+    //     this._alert.show('Erro', error.error, 'error');
+    //   })
   }
 
 }

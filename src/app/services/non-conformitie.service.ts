@@ -1,11 +1,11 @@
-import { NonConformitieDetail } from './../models/non-conformitie-detail';
-import { Observable } from 'rxjs';
-import { environment } from './../../environments/environment.prod';
-import { NonConformitieRegister } from './../models/non-conformitie-register';
-import { HttpOptionsService } from './../security/http-options.service';
-import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { AlertComponent } from 'src/app/components/alert/alert.component';
+import { environment } from './../../environments/environment.prod';
+import { NonConformitieDetail } from './../models/non-conformitie-detail';
+import { NonConformitieRegister } from './../models/non-conformitie-register';
+import { HttpOptionsService } from './../security/http-options.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,46 +20,46 @@ export class NonConformitieService {
 
 
   save(occurrence: NonConformitieRegister): Observable<any> {
-    return this._http.post<boolean>(environment.url + '/api/OccurrenceRegister', JSON.stringify(occurrence), this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.post<boolean>(environment.url + '/api/OccurrenceRegister', JSON.stringify(occurrence));
   }
 
   findAllOccurrence(): Observable<any> {
-    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/all', this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/all');
   }
 
   findOccurrenceById(occurrenceId: string): Observable<any> {
-    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/' + occurrenceId, this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/' + occurrenceId);
   }
 
   findOccurrenceForReport(date: any, setor: string): Observable<any> {
     console.log(date);
-    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/' + date + '/' + setor, this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/' + date + '/' + setor);
   }
 
   findOccurrenceByTypeId(occurrenceType: 'PreAnalitica' | 'Analitica' | 'PosAnalitica'): Observable<any> {
-    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/Occurrence/' + occurrenceType, this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/Occurrence/' + occurrenceType);
   }
 
   findOccurrenceByFilters(filter: string): Observable<any> {
     let query = filter ? filter : "/";
 
-    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/all?' + query, this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/all?' + query,);
   }
 
   findTypes(): Observable<any> {
-    return this._http.get<NonConformitieRegister[]>(environment.url + '/api/OccurrenceRegister/Types', this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieRegister[]>(environment.url + '/api/OccurrenceRegister/Types');
   }
 
   findTypeOccurrences(): Observable<any> {
-    return this._http.get<NonConformitieRegister[]>(environment.url + '/api/Occurrence', this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieRegister[]>(environment.url + '/api/Occurrence');
   }
 
   findClassifications(): Observable<any> {
-    return this._http.get<NonConformitieRegister[]>(environment.url + '/api/OccurrenceRegister/Classifications', this._httpOptions.getHttpOptionsWithAuthorization());
+    return this._http.get<NonConformitieRegister[]>(environment.url + '/api/OccurrenceRegister/Classifications');
   }
 
   deleteOccurrence(occurrenceId: string): Observable<any> {
-    return this._http.delete<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/' + occurrenceId, this._httpOptions.getHttpOptionsWithAuthorization())
+    return this._http.delete<NonConformitieDetail[]>(environment.url + '/api/OccurrenceRegister/' + occurrenceId)
   }
 
 }

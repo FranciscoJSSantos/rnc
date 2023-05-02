@@ -11,6 +11,10 @@
   background-color: #2FC99F;
 }
 
+.mat-flat-button.mat-accent, .mat-raised-button.mat-accent, .mat-fab.mat-accent, .mat-mini-fab.mat-accent {
+  background-color: #2FC99F !important;
+}
+
 .onde{
   display: none;
 }
