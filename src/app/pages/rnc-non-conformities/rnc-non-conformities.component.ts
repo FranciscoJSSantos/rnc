@@ -62,30 +62,95 @@ export class RncNonConformitiesComponent implements OnInit {
   archives: any[] = [];
 
   findAllTypes() {
-    this._occurrenceService.findTypes()
-      .subscribe(types => {
-        this.types = types;
-      }, error => {
-        this._alert.show('Erro', error.error, 'error');
-      })
+    // this._occurrenceService.findTypes()
+    //   .subscribe(types => {
+        this.types = [
+          {
+            "id": "1",
+            "name": "Analítica"
+          },
+          {
+            "id": "2",
+            "name": "Pré-Analítica"
+          },
+          {
+            "id": "3",
+            "name": "Pós-Analítica"
+          }
+        ];
+      // }, error => {
+      //   this._alert.show('Erro', error.error, 'error');
+      // })
   }
 
   findAllTypesClassification() {
-    this._occurrenceService.findTypeOccurrences()
-      .subscribe(findTypeOccurrences => {
-        this.typesClassification = findTypeOccurrences;
-      }, error => {
-        this._alert.show('Erro', error.error, 'error');
-      })
+    // this._occurrenceService.findTypeOccurrences()
+    //   .subscribe(findTypeOccurrences => {
+        this.typesClassification = [
+          {
+            "id": "1",
+            "description": "De Processo",
+            "isExisting": true
+          },
+          {
+            "id": "2",
+            "description": "De Auditoria",
+            "isExisting": true
+          },
+          {
+            "id": "3",
+            "description": "Reclamação de cliente",
+            "isExisting": true
+          },
+          {
+            "id": "4",
+            "description": "De Indicador",
+            "isExisting": true
+          },
+          {
+            "id": "5",
+            "description": "Análise de Risco",
+            "isExisting": true
+          }
+        ];
+      // }, error => {
+      //   this._alert.show('Erro', error.error, 'error');
+      // })
   }
 
   findAllClassifications() {
-    this._occurrenceService.findClassifications()
-      .subscribe(findClassifications => {
-        this.Classifications = findClassifications;
-      }, error => {
-        this._alert.show('Erro', error.error, 'error');
-      })
+    // this._occurrenceService.findClassifications()
+    //   .subscribe(findClassifications => {
+        this.Classifications = [
+          {
+            "id": "1",
+            "name": "Near miss"
+          },
+          {
+            "id": "2",
+            "name": "Evento adverso leve"
+          },
+          {
+            "id": "3",
+            "name": "Evento adverso moderado"
+          },
+          {
+            "id": "4",
+            "name": "Evento adverso grave"
+          },
+          {
+            "id": "5",
+            "name": "Evento sem dano"
+          },
+          {
+            "id": "6",
+            "name": "Sem risco"
+          }
+        ]
+        ;
+      // }, error => {
+      //   this._alert.show('Erro', error.error, 'error');
+      // })
   }
 
 
@@ -93,7 +158,7 @@ export class RncNonConformitiesComponent implements OnInit {
   description: FormGroup;
   acaoImediata: FormGroup;
   evidence: FormGroup;
-  occurrences: { id: string, typeNonComplianceId: string, description: string, nameNonCompliance: string, archives: Archive[] }[] = [];
+  occurrences: { id: string, typeNonComplianceId: string, description: string, nameNonCompliance: string}[] = [];
   isFormDisabled: boolean;
   public mask = [/\d/, /\d/, '/', /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/];
   @ViewChild('stepper') stepper: MatStepper;
@@ -200,12 +265,18 @@ export class RncNonConformitiesComponent implements OnInit {
   }
 
 
-
-  findAllOccurrences() {
-    this._occurrenceService.findAllOccurrence()
-      .subscribe(occurrences => {
-        this.occurrences = occurrences;
-      })
+ findAllOccurrences() {
+    // this._occurrenceService.findAllOccurrence()
+    //   .subscribe(occurrences => {
+        this.occurrences = [
+          {
+            "id": "1",
+            "typeNonComplianceId": "coleta",
+            "description": "dsada",
+            "nameNonCompliance": "dsada"
+          },
+        ];
+      // })
   }
 
   setValidators(occurrenceTypeId) {
@@ -241,12 +312,62 @@ export class RncNonConformitiesComponent implements OnInit {
   }
 
   findAllSetor() {
-    this._setorService.getAllSetor()
-      .subscribe(setores => {
-        this.setores = setores;
-      }, erro => {
-        this._alert.show('Erro', erro.error, 'error');
-      })
+    // this._setorService.getAllSetor()
+    //   .subscribe(setores => {
+        this.setores = [
+          {
+            "id": "1",
+            "name": "Coleta"
+          },
+          {
+            "id": "2",
+            "name": "Microbiologia"
+          },
+          {
+            "id": "3",
+            "name": "Parasitologia"
+          },
+          {
+            "id": "4",
+            "name": "Imuno-hematologia"
+          },
+          {
+            "id": "5",
+            "name": "Triagem"
+          },
+          {
+            "id": "6",
+            "name": "Recepção"
+          },
+          {
+            "id": "7",
+            "name": "Bioquímica"
+          },
+          {
+            "id": "8",
+            "name": "Urinálise"
+          },
+          {
+            "id": "9",
+            "name": "Administrativo"
+          },
+          {
+            "id": "10",
+            "name": "Assistencial"
+          },
+          {
+            "id": "11",
+            "name": "Prestadores de serviço"
+          },
+          {
+            "id": "12",
+            "name": "Fornecedores"
+          }
+        ]
+        ;
+      // }, erro => {
+      //   this._alert.show('Erro', erro.error, 'error');
+      // })
   }
 
   removeOC(obj, occurrenceTypeId: number) {

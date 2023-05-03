@@ -1,5 +1,5 @@
 <!-- CONTEÚDO RESULTANTE -->
-<rnc-sidenav >
+<rnc-sidenav *ngIf="isLogged(); else telasSemAutenticacao">
     <router-outlet></router-outlet>
 </rnc-sidenav>
 

@@ -12,10 +12,10 @@ export class PermissionGuard implements CanActivateChild {
 
     canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
         let permissions: string[] = childRoute.data.permissions;
-        // if (permissions.indexOf(sessionStorage.getItem('permission')) === -1) {
-        //     this._router.navigateByUrl('error500');
-        //     return false;
-        // }
+        if (permissions.indexOf(sessionStorage.getItem('permission')) === -1) {
+            this._router.navigateByUrl('error500');
+            return false;
+        }
         return true;
     }
 }

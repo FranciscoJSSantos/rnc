@@ -98,9 +98,50 @@ export class RncRegisterComponent implements OnInit {
       },
       {
         "id": "2",
-        "name": "Aumoxarifado"
+        "name": "Microbiologia"
+      },
+      {
+        "id": "3",
+        "name": "Parasitologia"
+      },
+      {
+        "id": "4",
+        "name": "Imuno-hematologia"
+      },
+      {
+        "id": "5",
+        "name": "Triagem"
+      },
+      {
+        "id": "6",
+        "name": "Recepção"
+      },
+      {
+        "id": "7",
+        "name": "Bioquímica"
+      },
+      {
+        "id": "8",
+        "name": "Urinálise"
+      },
+      {
+        "id": "9",
+        "name": "Administrativo"
+      },
+      {
+        "id": "10",
+        "name": "Assistencial"
+      },
+      {
+        "id": "11",
+        "name": "Prestadores de serviço"
+      },
+      {
+        "id": "12",
+        "name": "Fornecedores"
       }
     ]
+    
     // this._setorService.getAllSetor()
     //   .subscribe(setores => {
     //     this.setores = setores;
