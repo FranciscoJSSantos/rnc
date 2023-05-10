@@ -14,7 +14,7 @@ import { TypesClassification } from 'src/app/models/types-classification.model';
 import { Types } from 'src/app/models/types.model';
 import { NonConformitieService } from 'src/app/services/non-conformitie.service';
 import { SetorService } from 'src/app/services/setor.service';
-import { Archive, NonConformitieRegister, Occurrence } from './../../models/non-conformitie-register';
+import { NonConformitieRegister, Occurrence } from './../../models/non-conformitie-register';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {

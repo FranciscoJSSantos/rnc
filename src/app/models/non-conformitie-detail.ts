@@ -1,4 +1,4 @@
-import { Archive } from "./non-conformitie-register";
+
 export interface NonConformitieDetail {
     id: string,
     userName: string,
@@ -13,7 +13,6 @@ export interface NonConformitieDetail {
         occurrencyTypeId: string,
         description: string,
         dsOccurrenceType: string,
-        archives: Archive[],
     }[],
     setor: string,
     hasRootCauseAnalysis: boolean,

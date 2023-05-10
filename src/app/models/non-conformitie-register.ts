@@ -11,14 +11,5 @@ export interface NonConformitieRegister {
 }
 
 export interface Occurrence {
-    description: string,
-    archives: Archive[]
-}
-
-export interface Archive {
-    fileName: string,
-    file: string,
-    fileType: string,
-    url: string
-
+    description: string
 }

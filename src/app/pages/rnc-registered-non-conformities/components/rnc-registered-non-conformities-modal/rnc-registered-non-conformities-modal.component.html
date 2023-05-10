@@ -37,18 +37,6 @@
         <p>{{occurrence.peopleInvolved}}</p>
     </span>
 
-    <h3>Anexos:</h3>
-    <ul *ngFor="let arc of archives">
-        <li>
-            <span>
-                {{arc.occurrenceDescription}}:
-            </span>
-            <a href="{{arc.url}}" [download]>
-                {{arc.fileName}}
-            </a>
-        </li>
-    </ul>
-
 </mat-dialog-content>
 <mat-dialog-actions [ngSwitch]="occurrence.occurrencePendency">
     <button *ngSwitchCase="1" mat-raised-button class="btnAcao" (click)="analisarOccurrence(occurrence.id);">

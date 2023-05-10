@@ -1,11 +1,10 @@
-import { RncEffectivenessVerificationComponent } from './../rnc-effectiveness-verification/rnc-effectiveness-verification.component';
-import { NonConformitieDetail } from './../../../../models/non-conformitie-detail';
 import { Component, Inject, InjectionToken, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { NonConformitieService } from 'src/app/services/non-conformitie.service';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { RncRootCauseAnalysisComponent } from '../rnc-root-cause-analysis/rnc-root-cause-analysis.component';
 import { RncRiskRatingComponent } from '../rnc-risk-rating/rnc-risk-rating.component';
-import { Archive } from 'src/app/models/non-conformitie-register';
+import { RncRootCauseAnalysisComponent } from '../rnc-root-cause-analysis/rnc-root-cause-analysis.component';
+import { NonConformitieDetail } from './../../../../models/non-conformitie-detail';
+import { RncEffectivenessVerificationComponent } from './../rnc-effectiveness-verification/rnc-effectiveness-verification.component';
 
 @Component({
   selector: 'rnc-registered-non-conformities-modal',
@@ -23,9 +22,6 @@ export class RncRegisteredNonConformitiesModalComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.occurrence = data;
-    this.occurrence.occurrences.forEach(o => {
-      this.archives = this.archives.concat(o.archives.map(archive => { return { fileName: archive.fileName, occurrenceDescription: o.description, url: archive.url } }));
-    });
   }
 
   ngOnInit(): void {
