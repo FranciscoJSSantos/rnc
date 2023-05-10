@@ -1,7 +1,7 @@
 <div class="row">
   <h2 class="titulo">Ocorrências Cadastradas</h2>
 </div>
-<div class="d-flex justify-content-center">
+<!-- <div class="d-flex justify-content-center">
   <button mat-raised-button class="filtro" [matMenuTriggerFor]="menu">
     <mat-icon>filter_list</mat-icon>&nbsp;
     <mat-label>
@@ -12,7 +12,7 @@
             <mat-menu #menu>
                 <mat-optgroup *ngFor="let group of filterGroups" [label]="group.name" [disabled]="group.disabled">
                     <mat-option (click)="$event.stopPropagation();"
-                        
+
                         *ngFor="let filter of group.filter; let i = index" [value]="group.filter[i]">
                         {{filter.viewValue}}
                     </mat-option>
@@ -20,7 +20,7 @@
             </mat-menu>
         </mat-select>
     </button>
-</div>
+</div> -->
 
 <!-- <div class="d-flex justify-content-center filter-span">
   <span *ngIf="!isGroupSelected">Filtro Selecionado: <b>Todos</b> de <b>Todos</b></span>
