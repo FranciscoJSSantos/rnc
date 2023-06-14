@@ -16,6 +16,9 @@ h2{
 
   li{
     width: 12rem;
+    font-size: 1rem;
+    margin-left: 3rem;
+    font: 400 14px/20px Roboto, "Helvetica Neue", sans-serif;
   }
 
   .item-nome{
@@ -60,6 +63,7 @@ p{
 
   .clear{
     margin-left: 8rem;
+    margin-right: 1rem;
     margin-top: -0.5rem;
     font-size: 2rem;
   }

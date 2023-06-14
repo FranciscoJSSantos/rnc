@@ -6,4 +6,6 @@
 
 .data-mes{
     font-weight: bolder;
+    text-transform: uppercase;
+    font-size: 2em;
 }

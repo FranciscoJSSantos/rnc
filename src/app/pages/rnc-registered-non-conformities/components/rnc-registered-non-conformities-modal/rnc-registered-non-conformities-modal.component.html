@@ -25,11 +25,11 @@
     </span>
 
     <h3>Ocorrências:</h3>
-    <ul *ngFor="let oc of occurrence.occurrences">
+    <ul class="mb-3" *ngFor="let oc of occurrence.occurrences">
         <li> {{ oc.description}} {{oc.dsOccurrenceType}} </li>
     </ul>
 
-    <h3>Classificação da ocorrência:</h3>
+    <h3 class="mt-1">Classificação da ocorrência:</h3>
     <h2>{{occurrence.occurrenceClassification}}</h2>
 
     <span *ngIf="occurrence.peopleInvolved">

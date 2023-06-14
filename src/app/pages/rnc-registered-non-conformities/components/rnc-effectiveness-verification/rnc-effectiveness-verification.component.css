@@ -25,6 +25,12 @@
   width: 22rem;
 }
 
+textarea:focus, input:focus{
+  border: none;
+  outline: none;
+  box-shadow: none;
+}
+
 .arrumar-card{
   width:23rem;
 }

@@ -70,16 +70,14 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/rnc-report-analysis/rnc-report-analysis.module').then(
         (m) => m.RncReportAnalysisModule
-      ),
-    canActivate: [AuthGuard],
+      )
   },
   {
     path: '4lab-chart',
     loadChildren: () =>
       import('./pages/rnc-chart/rnc-chart.module').then(
         (m) => m.RncChartModule
-      ),
-    canActivate: [AuthGuard],
+      )
   },
   {
     path: 'registered-non-conformities',

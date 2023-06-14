@@ -72,13 +72,13 @@
 
       <h3>
         <mat-panel-title [ngSwitch]="occurrence.occurrencePendency" [ngClass]="{'textRed': occurrence.isDelayed}">
-          <b *ngSwitchCase="1" class="container-pendencia">Pendência<span *ngIf="occurrence.isDelayed"> em
+          <b *ngSwitchCase="1" class="container-pendencia">1° Pendência<span *ngIf="occurrence.isDelayed"> em
               atraso</span>: Análise de
             Causa Raiz</b>
-          <b *ngSwitchCase="2" class="container-pendencia">Pendência<span *ngIf="occurrence.isDelayed"> em
+          <b *ngSwitchCase="2" class="container-pendencia">2° Pendência<span *ngIf="occurrence.isDelayed"> em
               atraso</span>:
             Classificação de Risco</b>
-          <b *ngSwitchCase="3" class="container-pendencia">Pendência<span *ngIf="occurrence.isDelayed"> em
+          <b *ngSwitchCase="3" class="container-pendencia">3° Pendência<span *ngIf="occurrence.isDelayed"> em
               atraso</span>: Verificação
             de Efetividade</b>
           <b *ngSwitchDefault class="container-pendencia">Pendência: Nenhuma</b>

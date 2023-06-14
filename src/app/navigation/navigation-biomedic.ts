@@ -16,6 +16,21 @@ export const navigationBiomedic = [
       }
     ]
   },
+  {
+      label: 'Análise',
+      icon: 'data_saver_off',
+      items: [
+        {
+          label: 'Gráfico',
+          link: '/4lab-chart',
+          icon: 'assessment',
+        },
+        {
+          label: 'Relatório',
+          link: '/4lab-report-analysis',
+          icon: 'assignment',
+        }
+      ]}
   /*{
     label: 'Plano de ação',
     icon: 'input',
@@ -32,22 +47,7 @@ export const navigationBiomedic = [
       },
     ]
   },*/
-  // {
-  //   label: 'Análise',
-  //   icon: 'data_saver_off',
-  //   items: [
-  //     {
-  //       label: 'Gráfico',
-  //       link: '/4lab-chart',
-  //       icon: 'assessment',
-  //     },
-  //     {
-  //       label: 'Relatório',
-  //       link: '/4lab-report-analysis',
-  //       icon: 'assignment',
-  //     }
-  //   ]}
-  // },
+  // ,
   // {
   //   label: 'Aprovação de Cadastro',
   //   icon: 'approval',

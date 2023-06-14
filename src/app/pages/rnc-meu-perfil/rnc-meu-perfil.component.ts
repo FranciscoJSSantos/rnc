@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { RncMeuPerfilModalComponent } from './components/rnc-meu-perfil-modal/rnc-meu-perfil-modal.component';
-import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/user';
+import { UserService } from 'src/app/services/user.service';
 import { RncMeuPerfilModalPasswordComponent } from './components/rnc-meu-perfil-modal-password/rnc-meu-perfil-modal-password.component';
+import { RncMeuPerfilModalComponent } from './components/rnc-meu-perfil-modal/rnc-meu-perfil-modal.component';
 @Component({
   selector: 'meu-perfil',
   templateUrl: './rnc-meu-perfil.component.html',
@@ -38,10 +38,19 @@ export class RncMeuPerfilComponent implements OnInit {
   }
 
   getUser() {
-    let userSession: User = JSON.parse(sessionStorage.getItem('user')) as User;
-    this._userService.findUserById(userSession.email).subscribe((user) => {
-      this.user = user;
-    });
+
+      this.user = {
+        "id": 1,
+          "completeName":" Francisco José",
+          "email": "francisco.jsantos@souunit.com",
+          "enrollment": "1191119685",
+          "setor": "Coleta",
+          "ativo": true,
+          "password": "123",
+          "confirmPassword": "123",
+          "userPermission": "BIOMEDICAL" }
+  
+ 
   }
 
   menuOpened() {

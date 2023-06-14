@@ -1,6 +1,6 @@
 .example-card {
   width: 400px;
-  height: 440px;
+  height: 320px;
   top: 2rem;
   max-width: 400px;
 }
@@ -40,6 +40,7 @@
 h3{
   margin-left: 0rem;
   color: #014248; 
+  font-weight: bold;
 }
 
 .dados-pessoais{
@@ -50,7 +51,7 @@ h3{
 .mat-divider-itens{
   margin-left: 8rem !important;
   width: 14rem !important;
-  margin-top: -2.5rem;
+  margin-top: -1.5rem;
 }
 
 h2{

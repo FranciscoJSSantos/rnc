@@ -1,24 +1,14 @@
-import { NonConformitieDetail } from './../../models/non-conformitie-detail';
-import { SetorService } from 'src/app/services/setor.service';
-import { ReportService } from './../../services/report.service';
+import { registerLocaleData } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import localePt from '@angular/common/locales/pt';
 import {
-  Component,
   ChangeDetectionStrategy,
-  ViewChild,
+  Component,
+  OnInit,
   TemplateRef,
-  OnInit
+  ViewChild
 } from '@angular/core';
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours,
-} from 'date-fns';
-import { Subject } from 'rxjs';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -27,12 +17,23 @@ import {
   CalendarView,
   DAYS_OF_WEEK,
 } from 'angular-calendar';
-import { registerLocaleData } from '@angular/common';
-import localePt from '@angular/common/locales/pt';
+import {
+  addDays,
+  addHours,
+  endOfDay,
+  endOfMonth,
+  isSameDay,
+  isSameMonth,
+  startOfDay,
+  subDays,
+} from 'date-fns';
+import { Subject } from 'rxjs';
 import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { Setor } from 'src/app/models/setor.model';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { NonConformitieService } from 'src/app/services/non-conformitie.service';
+import { SetorService } from 'src/app/services/setor.service';
+import { NonConformitieDetail } from './../../models/non-conformitie-detail';
+import { ReportService } from './../../services/report.service';
 
 const colors: any = {
   red: {
@@ -88,6 +89,10 @@ export class RncReportAnalysisComponent implements OnInit {
   setores: Setor[] = [];
   activeDayIsOpen: boolean = true;
   setorForm: FormGroup;
+  occurrences: NonConformitieDetail[] = [];
+
+
+  url: "https://mailthis.to/Francisco";
 
   constructor(
     private modal: NgbModal,
@@ -95,7 +100,8 @@ export class RncReportAnalysisComponent implements OnInit {
     private _alert: AlertComponent,
     private _setorService: SetorService,
     private _occurrencesService: NonConformitieService,
-    private _fb: FormBuilder) {
+    private _fb: FormBuilder,
+    private _http: HttpClient) {
     registerLocaleData(localePt);
   }
 
@@ -103,6 +109,7 @@ export class RncReportAnalysisComponent implements OnInit {
     this.getAllSetor();
     this.createForm();
    }
+
 
   createForm() {
     this.setorForm = this._fb.group({
@@ -123,7 +130,7 @@ export class RncReportAnalysisComponent implements OnInit {
     this._reportService.findReportById(occurrencesRegisterId)
       .subscribe(report => {
         this.report = report
-      }, error => {
+      // }, error => {
        // this._alert.show('Erro', error.error, 'error');
       })
   }
@@ -132,8 +139,8 @@ export class RncReportAnalysisComponent implements OnInit {
     this._reportService.sendReportEmailById(occurrencesRegisterId)
       .subscribe(() => {
         this._alert.show('Enviado', 'E-mail encaminhado com sucesso!', 'success');
-      }, error => {
-        this._alert.show('Erro', error.error, 'error');
+      // }, error => {
+      //   this._alert.show('Erro', error.error, 'error');
       })
   }
 
@@ -207,20 +214,57 @@ export class RncReportAnalysisComponent implements OnInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
+  
+
   }
 
   setEvents(occurrences: NonConformitieDetail[]) {
     this.events = [];
-    occurrences.forEach(nc => {
+  
       this.events.push({
-        start: startOfDay(new Date(nc.date)),
-        end: startOfDay(new Date(nc.date)),
-        title: nc.setor,
-        id: nc.id,
+        start: startOfDay(new Date("2023-06-15")),
+        end: startOfDay(new Date("2023-06-15")),
+        title: "Coleta",
+        id: "1",
+        color: colors.red,
+        actions: this.actions
+      }, {
+        start: startOfDay(new Date("2023-06-15")),
+        end: startOfDay(new Date("2023-06-15")),
+        title: "Microbiologia",
+        id: "1",
+        color: colors.red,
+        actions: this.actions
+      },{
+        start: startOfDay(new Date("2023-06-15")),
+        end: startOfDay(new Date("2023-06-15")),
+        title: "Parasitologia",
+        id: "1",
+        color: colors.red,
+        actions: this.actions
+      }, {
+        start: startOfDay(new Date("2023-06-14")),
+        end: startOfDay(new Date("2023-06-14")),
+        title: "Microbilogia",
+        id: "2",
+        color: colors.red,
+        actions: this.actions
+      },{
+        start: startOfDay(new Date("2023-06-10")),
+        end: startOfDay(new Date("2023-06-10")),
+        title: "Microbilogia",
+        id: "2",
+        color: colors.red,
+        actions: this.actions
+      }, {
+        start: startOfDay(new Date("2023-06-10")),
+        end: startOfDay(new Date("2023-06-10")),
+        title: "Microbilogia",
+        id: "2",
         color: colors.red,
         actions: this.actions
       });
-    })
+
     this.refresh.next();
   }
 
