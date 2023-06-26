@@ -1,10 +1,10 @@
-import { Setor } from './../../models/setor.model';
-import { SetorService } from './../../services/setor.service';
-import { AlertComponent } from './../../components/alert/alert.component';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ChartService } from 'src/app/services/chart.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ChartService } from 'src/app/services/chart.service';
+import { AlertComponent } from './../../components/alert/alert.component';
+import { Setor } from './../../models/setor.model';
+import { SetorService } from './../../services/setor.service';
 
 @Component({
   selector: 'app-rnc-chart',
@@ -93,6 +93,8 @@ export class RncChartComponent implements OnInit {
     });
   }
 
+  urlPdf: String = "../assets/grafico.pdf";
+
   findReport() {
     if(this.chartForm.valid) {
       this._chartService.findChart(+this.chartForm.value.setor, +this.chartForm.value.month)
@@ -100,8 +102,7 @@ export class RncChartComponent implements OnInit {
           this.createForm();
           let pdfWindow = window.open("")
             pdfWindow.document.write(
-              "<iframe width='100%' height='100%' src='data:application/pdf;base64, " +
-            encodeURI(chartBase64) + "'></iframe>")
+              `<iframe width='100%' height='100%' src=${this.urlPdf} />`)
         })
     } else {
       this._alert.show('Inválido','Favor preencher os campos obrigatórios!', 'warning');

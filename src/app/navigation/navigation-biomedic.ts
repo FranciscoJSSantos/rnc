@@ -30,7 +30,12 @@ export const navigationBiomedic = [
           link: '/4lab-report-analysis',
           icon: 'assignment',
         }
-      ]}
+      ]},
+      {
+        label: 'Aprovação de Cadastro',
+        icon: 'approval',
+        link: '/registration-approval'
+      }
   /*{
     label: 'Plano de ação',
     icon: 'input',
@@ -48,9 +53,5 @@ export const navigationBiomedic = [
     ]
   },*/
   // ,
-  // {
-  //   label: 'Aprovação de Cadastro',
-  //   icon: 'approval',
-  //   link: '/registration-approval'
-  // }
+
 ];

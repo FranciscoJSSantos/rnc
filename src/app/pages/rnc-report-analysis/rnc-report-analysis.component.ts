@@ -9,6 +9,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {
   CalendarEvent,
@@ -32,6 +33,7 @@ import { AlertComponent } from 'src/app/components/alert/alert.component';
 import { Setor } from 'src/app/models/setor.model';
 import { NonConformitieService } from 'src/app/services/non-conformitie.service';
 import { SetorService } from 'src/app/services/setor.service';
+import { RncChartModalComponent } from '../authentication/rnc-login/components/rnc-chart-modal/rnc-chart-modal.component';
 import { NonConformitieDetail } from './../../models/non-conformitie-detail';
 import { ReportService } from './../../services/report.service';
 
@@ -92,8 +94,6 @@ export class RncReportAnalysisComponent implements OnInit {
   occurrences: NonConformitieDetail[] = [];
 
 
-  url: "https://mailthis.to/Francisco";
-
   constructor(
     private modal: NgbModal,
     private _reportService: ReportService,
@@ -101,7 +101,8 @@ export class RncReportAnalysisComponent implements OnInit {
     private _setorService: SetorService,
     private _occurrencesService: NonConformitieService,
     private _fb: FormBuilder,
-    private _http: HttpClient) {
+    private _http: HttpClient,
+    private dialog: MatDialog) {
     registerLocaleData(localePt);
   }
 
@@ -179,12 +180,17 @@ export class RncReportAnalysisComponent implements OnInit {
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
     this.findReportById(event.id.toString());
-    let modalRef = this.modal.open(this.modalContent, { size: 'lg' });
-    modalRef.result.then(res => {
-      if(res) {
-        this.sendReportEmailById(event.id.toString());
-      }
-    })
+    this.openModalShow();
+
+  }
+
+  openModalShow() {
+    let dialogRef = this.dialog.open(RncChartModalComponent);
+    dialogRef.afterClosed();
+  }
+
+  openModalAny() {
+    this.modal.open(this.modalContent, { size: 'lg' });
   }
 
   addEvent(): void {
@@ -214,56 +220,53 @@ export class RncReportAnalysisComponent implements OnInit {
 
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
-  
-
   }
 
   setEvents(occurrences: NonConformitieDetail[]) {
     this.events = [];
-  
-      this.events.push({
-        start: startOfDay(new Date("2023-06-15")),
-        end: startOfDay(new Date("2023-06-15")),
-        title: "Coleta",
-        id: "1",
-        color: colors.red,
-        actions: this.actions
-      }, {
-        start: startOfDay(new Date("2023-06-15")),
-        end: startOfDay(new Date("2023-06-15")),
-        title: "Microbiologia",
-        id: "1",
-        color: colors.red,
-        actions: this.actions
-      },{
-        start: startOfDay(new Date("2023-06-15")),
-        end: startOfDay(new Date("2023-06-15")),
-        title: "Parasitologia",
-        id: "1",
-        color: colors.red,
-        actions: this.actions
-      }, {
-        start: startOfDay(new Date("2023-06-14")),
-        end: startOfDay(new Date("2023-06-14")),
-        title: "Microbilogia",
-        id: "2",
-        color: colors.red,
-        actions: this.actions
-      },{
-        start: startOfDay(new Date("2023-06-10")),
-        end: startOfDay(new Date("2023-06-10")),
-        title: "Microbilogia",
-        id: "2",
-        color: colors.red,
-        actions: this.actions
-      }, {
-        start: startOfDay(new Date("2023-06-10")),
-        end: startOfDay(new Date("2023-06-10")),
-        title: "Microbilogia",
-        id: "2",
-        color: colors.red,
-        actions: this.actions
-      });
+    this.events.push({
+      start: startOfDay(new Date("2023-06-15")),
+      end: startOfDay(new Date("2023-06-15")),
+      title: "Coleta",
+      id: "1",
+      color: colors.red,
+      actions: this.actions
+    }, {
+      start: startOfDay(new Date("2023-06-15")),
+      end: startOfDay(new Date("2023-06-15")),
+      title: "Microbiologia",
+      id: "2",
+      color: colors.red,
+      actions: this.actions
+    },{
+      start: startOfDay(new Date("2023-06-15")),
+      end: startOfDay(new Date("2023-06-15")),
+      title: "Parasitologia",
+      id: "3",
+      color: colors.red,
+      actions: this.actions
+    }, {
+      start: startOfDay(new Date("2023-06-14")),
+      end: startOfDay(new Date("2023-06-14")),
+      title: "Microbilogia",
+      id: "4",
+      color: colors.red,
+      actions: this.actions
+    },{
+      start: startOfDay(new Date("2023-06-10")),
+      end: startOfDay(new Date("2023-06-10")),
+      title: "Microbilogia",
+      id: "5",
+      color: colors.red,
+      actions: this.actions
+    }, {
+      start: startOfDay(new Date("2023-06-10")),
+      end: startOfDay(new Date("2023-06-10")),
+      title: "Microbilogia",
+      id: "6",
+      color: colors.red,
+      actions: this.actions
+    });
 
     this.refresh.next();
   }

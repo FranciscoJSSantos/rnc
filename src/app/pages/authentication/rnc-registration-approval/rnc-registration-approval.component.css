@@ -37,18 +37,20 @@
 
 .btnLimpar{
   margin-left: 15%;
-  margin-top: 5%;
+  margin-top: 3rem;
   background-color: red !important;
   color: white;
 }
 
 .btnAcao{
   color: white;
+  margin-top: 3rem;
   background-color: #008001;
 }
 
 .itens-cartao{
   margin-left: 1rem;
+  margin-top: 1.3rem;
 }
 
 .item-registration{

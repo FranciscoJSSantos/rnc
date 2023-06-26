@@ -35,6 +35,7 @@
     "font-awesome": "^4.7.0",
     "http-server": "^0.12.3",
     "moment": "^2.29.1",
+    "ng-bootstrap-to-bootstrap-3": "^0.7.0",
     "ng-material-multilevel-menu": "^5.5.3",
     "ng2-file-upload": "^1.4.0",
     "ngx-mask": "^12.0.0",

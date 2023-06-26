@@ -26,16 +26,22 @@
       <div class="row itens-cartao">
         <h3 class="item-registration">
           <mat-panel-title>
+            <b>Matrícula</b>: {{user.enrollment}}
+          </mat-panel-title>
+        </h3>
+      </div>
+      <div class="row itens-cartao">
+        <h3 class="item-registration">
+          <mat-panel-title>
             <b>Setor</b>: {{user.setor}}
           </mat-panel-title>
         </h3>
       </div>
       <div>
-        <mat-divider></mat-divider>
-        <button mat-raised-button class="btnAcao" (click)="approveUser(user)">
+        <button mat-raised-button class="btnAcao mt-3" (click)="approveUser(user)">
           <mat-icon>done</mat-icon>&nbsp; Aprovar
         </button>
-        <button mat-raised-button class="btnLimpar" (click)="reproveUser(user)">
+        <button mat-raised-button class="btnLimpar mt-3" (click)="reproveUser(user)">
           <mat-icon>cancel</mat-icon>&nbsp; Reprovar
         </button>
       </div>

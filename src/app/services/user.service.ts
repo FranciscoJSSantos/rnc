@@ -24,11 +24,11 @@ export class UserService {
 		private _router: Router) {	}
 
 	save(user: User): Observable<any> {
-		return this._http.post<boolean>(environment.url + '/api/User', JSON.stringify(user), this._httpOptions.getHttpOptions())
+		return this._http.post<boolean>(environment.url + '/api/User', JSON.stringify(user))
 	}
 	// VERIFICAR QUESTAO DO ATIVO
 	findAllUsers(): Observable<any> {
-		return this._http.get<UserData[]>(environment.url + '/api/User/ToApprove', this._httpOptions.getHttpOptionsWithAuthorization());
+		return this._http.get<UserData[]>(environment.url + '/api/User/ToApprove');
 	}
 
 	approveUser(emailUser: string): Observable<any> {
